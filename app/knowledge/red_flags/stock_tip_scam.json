@@ -1,0 +1,261 @@
+{
+  "category": "STOCK_TIP_SCAM",
+  "display_name": "Stock Tip Scam",
+  "severity": "HIGH",
+  "financial": true,
+  "description": "Fraudulent stock market tips, pump-and-dump messages, fake SEBI advisor claims or paid trading signal groups that manipulate victims into buying shares, paying subscription fees or sharing trading credentials.",
+  "recommended_actions": [
+    "Do not trade based only on unsolicited tips from SMS, WhatsApp or Telegram.",
+    "Verify any investment advisor through SEBI's official intermediary records.",
+    "Do not share demat, broker login, OTP or trading account credentials.",
+    "Preserve messages, group links, advisor names, payment receipts and trade screenshots.",
+    "Report financial fraud immediately by calling 1930 if money was lost."
+  ],
+  "rules": [
+    {
+      "id": "STOCK_TIP_RULE_001",
+      "name": "Guaranteed Intraday Profit",
+      "weight": 40,
+      "keywords": [
+        "sure shot call",
+        "guaranteed profit",
+        "intraday profit",
+        "daily profit",
+        "jackpot call",
+        "target hit",
+        "stop loss guaranteed",
+        "no loss call"
+      ],
+      "regex": [
+        "\\b(?:target|profit)\\s*\\d{2,4}\\b"
+      ],
+      "explanation": "Claims certain profits from stock tips, which legitimate advisors cannot guarantee.",
+      "confidence": 94,
+      "examples": [
+        "Sure shot intraday call. Guaranteed profit today.",
+        "Buy now. Target hit in 30 minutes."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Tip Screenshot",
+        "Trade Screenshot"
+      ]
+    },
+    {
+      "id": "STOCK_TIP_RULE_002",
+      "name": "Telegram WhatsApp Stock Group",
+      "weight": 30,
+      "keywords": [
+        "telegram channel",
+        "whatsapp stock group",
+        "premium stock group",
+        "vip trading group",
+        "join channel",
+        "free calls",
+        "paid calls",
+        "operator call"
+      ],
+      "regex": [],
+      "explanation": "Uses messaging groups to broadcast tips, fake profit screenshots or manipulated recommendations.",
+      "confidence": 90,
+      "examples": [
+        "Join our premium Telegram channel for operator calls.",
+        "VIP WhatsApp group gives daily jackpot stocks."
+      ],
+      "evidence_required": [
+        "Group Link",
+        "Chat Screenshot",
+        "Admin Phone Number"
+      ]
+    },
+    {
+      "id": "STOCK_TIP_RULE_003",
+      "name": "SEBI Registration Claim",
+      "weight": 30,
+      "keywords": [
+        "sebi registered advisor",
+        "sebi registered",
+        "research analyst",
+        "investment advisor",
+        "registration certificate",
+        "sebi certified",
+        "official advisor",
+        "licensed analyst"
+      ],
+      "regex": [],
+      "explanation": "Claims SEBI registration or advisor status without verifiable registration details.",
+      "confidence": 90,
+      "examples": [
+        "We are SEBI registered advisors. Pay for premium calls.",
+        "Certificate attached. Join paid stock tips plan."
+      ],
+      "evidence_required": [
+        "Certificate Screenshot",
+        "Advisor Name",
+        "Website URL"
+      ]
+    },
+    {
+      "id": "STOCK_TIP_RULE_004",
+      "name": "Pump and Dump Recommendation",
+      "weight": 40,
+      "keywords": [
+        "upper circuit",
+        "operator active",
+        "big operator",
+        "multibagger today",
+        "penny stock",
+        "buy before circuit",
+        "accumulate fast",
+        "hidden gem"
+      ],
+      "regex": [],
+      "explanation": "Pushes victims to buy low-liquidity or penny stocks that may be manipulated for pump-and-dump fraud.",
+      "confidence": 93,
+      "examples": [
+        "Operator active. Buy this penny stock before upper circuit.",
+        "Hidden gem will become multibagger today."
+      ],
+      "evidence_required": [
+        "Tip Screenshot",
+        "Stock Symbol",
+        "Trade Screenshot"
+      ]
+    },
+    {
+      "id": "STOCK_TIP_RULE_005",
+      "name": "Paid Signal Subscription",
+      "weight": 25,
+      "keywords": [
+        "subscription fee",
+        "premium calls",
+        "monthly package",
+        "paid signal",
+        "profit sharing",
+        "service charge",
+        "trial call",
+        "renew package"
+      ],
+      "regex": [],
+      "explanation": "Requests payment for trading tips or signals using unverifiable performance claims.",
+      "confidence": 86,
+      "examples": [
+        "Pay monthly package fee for premium calls.",
+        "Trial call was successful. Renew package to continue."
+      ],
+      "evidence_required": [
+        "Payment Receipt",
+        "Chat Screenshot",
+        "UPI ID"
+      ]
+    },
+    {
+      "id": "STOCK_TIP_RULE_006",
+      "name": "Demat or Broker Credential Request",
+      "weight": 45,
+      "keywords": [
+        "share demat login",
+        "broker login",
+        "trading password",
+        "client id",
+        "tpin",
+        "share otp",
+        "api key",
+        "account access"
+      ],
+      "regex": [],
+      "explanation": "Attempts to obtain access to the victim's trading or demat account.",
+      "confidence": 98,
+      "examples": [
+        "Share your broker login so our expert can trade for you.",
+        "Send TPIN and OTP to execute profitable trade."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Broker Account Screenshot",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "STOCK_TIP_RULE_007",
+      "name": "Fake Profit Screenshot",
+      "weight": 25,
+      "keywords": [
+        "profit screenshot",
+        "verified profit",
+        "today profit",
+        "client profit",
+        "loss recovery",
+        "portfolio doubled",
+        "proof attached",
+        "live profit"
+      ],
+      "regex": [],
+      "explanation": "Uses screenshots of alleged client profits to lure victims into trades or paid tip services.",
+      "confidence": 84,
+      "examples": [
+        "See today's client profit screenshot. Join now.",
+        "We recovered all losses for our members."
+      ],
+      "evidence_required": [
+        "Profit Screenshot",
+        "Chat Screenshot",
+        "Group Link"
+      ]
+    },
+    {
+      "id": "STOCK_TIP_RULE_008",
+      "name": "Loss Recovery Promise",
+      "weight": 30,
+      "keywords": [
+        "recover loss",
+        "loss recovery",
+        "recover trading loss",
+        "portfolio recovery",
+        "guaranteed recovery",
+        "compensation trade",
+        "double recovery",
+        "special recovery call"
+      ],
+      "regex": [],
+      "explanation": "Targets people who lost money by promising recovery through paid tips or account access.",
+      "confidence": 90,
+      "examples": [
+        "We can recover your trading loss in one week.",
+        "Join special recovery call and double your capital."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Payment Receipt",
+        "Trade Screenshot"
+      ]
+    },
+    {
+      "id": "STOCK_TIP_RULE_009",
+      "name": "Urgent Buy Sell Pressure",
+      "weight": 20,
+      "keywords": [
+        "buy now",
+        "sell immediately",
+        "entry now",
+        "market closing",
+        "only few minutes",
+        "do not miss",
+        "fast entry",
+        "exit now"
+      ],
+      "regex": [],
+      "explanation": "Applies time pressure so the victim trades without checking the source or risk.",
+      "confidence": 82,
+      "examples": [
+        "Buy now before market closing. Do not miss.",
+        "Entry now. Only few minutes left."
+      ],
+      "evidence_required": [
+        "Tip Screenshot",
+        "Timestamp",
+        "Chat Screenshot"
+      ]
+    }
+  ]
+}

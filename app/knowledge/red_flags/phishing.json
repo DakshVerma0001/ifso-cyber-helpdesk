@@ -1,0 +1,266 @@
+{
+  "category": "PHISHING",
+  "display_name": "Phishing",
+  "severity": "HIGH",
+  "financial": true,
+  "description": "Fraudulent emails, websites, forms or messages that imitate trusted organizations to steal login credentials, OTPs, identity documents, payment details or install malware.",
+  "recommended_actions": [
+    "Do not click suspicious links or open unexpected attachments.",
+    "Do not enter passwords, OTPs, UPI PINs, card details, Aadhaar or PAN on unverified pages.",
+    "Verify the website domain and access services through official apps or typed URLs.",
+    "Report financial fraud immediately by calling 1930.",
+    "Preserve emails, headers, URLs, screenshots, attachments and transaction details."
+  ],
+  "rules": [
+    {
+      "id": "PHISHING_RULE_001",
+      "name": "Fake Login Page",
+      "weight": 45,
+      "keywords": [
+        "verify login",
+        "account login",
+        "secure login",
+        "password verification",
+        "login immediately",
+        "reactivate account",
+        "confirm password",
+        "update credentials"
+      ],
+      "regex": [
+        "https?:\\/\\/[^\\s]+"
+      ],
+      "explanation": "Directs the victim to a fake login page designed to steal credentials.",
+      "confidence": 96,
+      "examples": [
+        "Your account is locked. Login here to reactivate.",
+        "Verify your password using the secure login link."
+      ],
+      "evidence_required": [
+        "Email Screenshot",
+        "URL",
+        "Website Screenshot"
+      ]
+    },
+    {
+      "id": "PHISHING_RULE_002",
+      "name": "Lookalike Domain",
+      "weight": 40,
+      "keywords": [
+        "secure",
+        "verify",
+        "support",
+        "login",
+        "update",
+        "customer",
+        "banking",
+        "official"
+      ],
+      "regex": [
+        "\\b[a-z0-9-]+(?:bank|pay|upi|kyc|support|secure)[a-z0-9-]*\\.(?:com|in|net|org|co)\\b"
+      ],
+      "explanation": "Uses a domain that looks similar to a legitimate bank, wallet, government or service provider.",
+      "confidence": 90,
+      "examples": [
+        "Login at sbi-secure-update.example.com.",
+        "Complete KYC at paytm-verify.example.in."
+      ],
+      "evidence_required": [
+        "URL",
+        "Email Header",
+        "Website Screenshot"
+      ]
+    },
+    {
+      "id": "PHISHING_RULE_003",
+      "name": "KYC Account Suspension Email",
+      "weight": 35,
+      "keywords": [
+        "kyc expired",
+        "update kyc",
+        "account suspended",
+        "account blocked",
+        "wallet suspended",
+        "verification pending",
+        "complete verification",
+        "avoid deactivation"
+      ],
+      "regex": [],
+      "explanation": "Uses KYC or account suspension notices to push the victim to a credential-stealing form.",
+      "confidence": 93,
+      "examples": [
+        "Your bank KYC has expired. Update now to avoid account blocking.",
+        "Wallet verification pending. Complete immediately."
+      ],
+      "evidence_required": [
+        "Email Screenshot",
+        "URL",
+        "Sender Address"
+      ]
+    },
+    {
+      "id": "PHISHING_RULE_004",
+      "name": "Attachment or Malware Lure",
+      "weight": 35,
+      "keywords": [
+        "invoice attached",
+        "payment receipt attached",
+        "open attachment",
+        "download file",
+        "view document",
+        "enable macros",
+        "attached notice",
+        "download apk"
+      ],
+      "regex": [
+        "\\.(?:apk|exe|scr|zip|rar|docm|xlsm)\\b"
+      ],
+      "explanation": "Encourages opening a suspicious attachment or file that may contain malware.",
+      "confidence": 92,
+      "examples": [
+        "Open attached invoice and enable macros.",
+        "Download APK to complete customer verification."
+      ],
+      "evidence_required": [
+        "Email Screenshot",
+        "Attachment File",
+        "Sender Address"
+      ]
+    },
+    {
+      "id": "PHISHING_RULE_005",
+      "name": "Bank Card or UPI Credential Form",
+      "weight": 45,
+      "keywords": [
+        "card number",
+        "cvv",
+        "expiry date",
+        "atm pin",
+        "upi pin",
+        "net banking password",
+        "otp",
+        "security code"
+      ],
+      "regex": [],
+      "explanation": "Attempts to collect confidential payment credentials through a phishing page or form.",
+      "confidence": 98,
+      "examples": [
+        "Enter card number, expiry, CVV and OTP to verify.",
+        "Submit UPI PIN to receive refund."
+      ],
+      "evidence_required": [
+        "Form Screenshot",
+        "URL",
+        "Email Screenshot"
+      ]
+    },
+    {
+      "id": "PHISHING_RULE_006",
+      "name": "Government Tax or Refund Phishing",
+      "weight": 30,
+      "keywords": [
+        "income tax refund",
+        "itr refund",
+        "gst refund",
+        "pan verification",
+        "aadhaar verification",
+        "digilocker",
+        "government notice",
+        "refund approved"
+      ],
+      "regex": [],
+      "explanation": "Impersonates Indian government, tax or identity services to steal banking and identity details.",
+      "confidence": 90,
+      "examples": [
+        "Income tax refund approved. Verify bank account details.",
+        "PAN verification pending. Upload Aadhaar immediately."
+      ],
+      "evidence_required": [
+        "Email Screenshot",
+        "Sender Address",
+        "URL"
+      ]
+    },
+    {
+      "id": "PHISHING_RULE_007",
+      "name": "Corporate Email Credential Theft",
+      "weight": 35,
+      "keywords": [
+        "mailbox full",
+        "password expires",
+        "office 365",
+        "outlook verification",
+        "vpn login",
+        "hr portal",
+        "salary slip",
+        "policy update"
+      ],
+      "regex": [],
+      "explanation": "Targets workplace credentials through fake IT, HR, email or VPN login pages.",
+      "confidence": 90,
+      "examples": [
+        "Your mailbox password expires today. Login to continue.",
+        "View salary slip by verifying your office account."
+      ],
+      "evidence_required": [
+        "Email Screenshot",
+        "Sender Address",
+        "URL",
+        "Email Header"
+      ]
+    },
+    {
+      "id": "PHISHING_RULE_008",
+      "name": "Prize Reward or Cashback Phishing",
+      "weight": 25,
+      "keywords": [
+        "claim reward",
+        "claim cashback",
+        "winner",
+        "lucky draw",
+        "free gift",
+        "reward points",
+        "voucher",
+        "limited offer"
+      ],
+      "regex": [],
+      "explanation": "Uses fake rewards, gifts or cashback to lure the victim into submitting credentials or payment details.",
+      "confidence": 84,
+      "examples": [
+        "You won a gift voucher. Login to claim.",
+        "Cashback reward expires today. Verify card details."
+      ],
+      "evidence_required": [
+        "Message Screenshot",
+        "URL",
+        "Sender Address"
+      ]
+    },
+    {
+      "id": "PHISHING_RULE_009",
+      "name": "Urgency or Final Notice",
+      "weight": 20,
+      "keywords": [
+        "urgent",
+        "final notice",
+        "last warning",
+        "within 24 hours",
+        "immediate action",
+        "expires today",
+        "avoid penalty",
+        "act now"
+      ],
+      "regex": [],
+      "explanation": "Uses deadlines, threats or penalties to make the victim act without verification.",
+      "confidence": 82,
+      "examples": [
+        "Final notice: verify within 24 hours.",
+        "Immediate action required to avoid penalty."
+      ],
+      "evidence_required": [
+        "Email Screenshot",
+        "Sender Address",
+        "URL"
+      ]
+    }
+  ]
+}

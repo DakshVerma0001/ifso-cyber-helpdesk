@@ -1,0 +1,16 @@
+{
+  "responses": {
+    "high_risk": {
+      "title": "High Risk Fraud Detected",
+      "message": "This message contains multiple indicators commonly associated with cyber fraud."
+    },
+    "medium_risk": {
+      "title": "Suspicious Message",
+      "message": "Some suspicious indicators were detected. Verify before taking any action."
+    },
+    "low_risk": {
+      "title": "Likely Safe",
+      "message": "No significant fraud indicators were detected."
+    }
+  }
+}

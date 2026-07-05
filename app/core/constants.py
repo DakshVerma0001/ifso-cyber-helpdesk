@@ -1,0 +1,16 @@
+PROJECT_NAME = "IFSO Cyber Helpdesk"
+
+API_VERSION = "v1"
+
+SESSION_HEADER = "X-Session-ID"
+
+REQUEST_ID_HEADER = "X-Request-ID"
+
+MAX_MESSAGE_LENGTH = 5000
+
+MAX_CHAT_HISTORY = 50
+
+SUPPORTED_FRAUD_LANGUAGES = [
+    "en",
+    "hi",
+]

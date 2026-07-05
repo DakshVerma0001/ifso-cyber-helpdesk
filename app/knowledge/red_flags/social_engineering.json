@@ -1,0 +1,334 @@
+{
+  "category": "SOCIAL_ENGINEERING",
+  "display_name": "Social Engineering Scam",
+  "severity": "CRITICAL",
+  "financial": true,
+  "description": "Fraudsters manipulate victims through impersonation, authority, urgency, fear or trust to obtain money, OTPs, credentials or remote access.",
+  "recommended_actions": [
+    "Stop communicating with the suspected fraudster.",
+    "Do not share OTPs, PINs, passwords or banking credentials.",
+    "Never install unknown apps such as screen-sharing applications on request.",
+    "Report the incident to 1930 immediately if money has been lost.",
+    "Preserve chat screenshots, call recordings and transaction details."
+  ],
+  "rules": [
+    {
+      "id": "SOCENG_RULE_001",
+      "name": "Police Impersonation",
+      "weight": 35,
+      "keywords": [
+        "police",
+        "cyber cell",
+        "crime branch",
+        "cbi",
+        "ed notice"
+      ],
+      "regex": [],
+      "explanation": "Fraudster impersonates law enforcement.",
+      "confidence": 90,
+      "examples": [
+        "I am from Cyber Cell. Your Aadhaar is linked to illegal activity."
+      ],
+      "evidence_required": [
+        "Call Recording",
+        "Phone Number",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "SOCENG_RULE_002",
+      "name": "Bank Official",
+      "weight": 30,
+      "keywords": [
+        "bank manager",
+        "bank executive",
+        "rbi",
+        "verification"
+      ],
+      "regex": [],
+      "explanation": "Pretends to be a bank representative.",
+      "confidence": 90,
+      "examples": [
+        "I am calling from SBI verification department."
+      ],
+      "evidence_required": [
+        "Phone Number",
+        "Phone Number",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "SOCENG_RULE_003",
+      "name": "Fake Customer Care",
+      "weight": 30,
+      "keywords": [
+        "customer care",
+        "support executive",
+        "helpline"
+      ],
+      "regex": [],
+      "explanation": "Impersonates customer support.",
+      "confidence": 90,
+      "examples": [
+        "I am Paytm customer care."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Phone Number",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "SOCENG_RULE_004",
+      "name": "Screen Sharing Request",
+      "weight": 45,
+      "keywords": [
+        "anydesk",
+        "teamviewer",
+        "rustdesk",
+        "quicksupport"
+      ],
+      "regex": [],
+      "explanation": "Asks victim to install remote access apps.",
+      "confidence": 90,
+      "examples": [
+        "Install AnyDesk to resolve your issue."
+      ],
+      "evidence_required": [
+        "APK File",
+        "Phone Number",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "SOCENG_RULE_005",
+      "name": "Authority Pressure",
+      "weight": 20,
+      "keywords": [
+        "legal action",
+        "court notice",
+        "arrest",
+        "penalty"
+      ],
+      "regex": [],
+      "explanation": "Uses fear and authority.",
+      "confidence": 80,
+      "examples": [
+        "You will be arrested today."
+      ],
+      "evidence_required": [
+        "Call Recording",
+        "Phone Number",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "SOCENG_RULE_006",
+      "name": "Emergency Family Scam",
+      "weight": 20,
+      "keywords": [
+        "send money urgently",
+        "family emergency",
+        "hospital"
+      ],
+      "regex": [],
+      "explanation": "Uses emotional manipulation.",
+      "confidence": 80,
+      "examples": [
+        "Your son met with an accident."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Phone Number",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "SOCENG_RULE_007",
+      "name": "Courier Scam",
+      "weight": 25,
+      "keywords": [
+        "parcel seized",
+        "customs",
+        "courier"
+      ],
+      "regex": [],
+      "explanation": "Fake courier/customs scam.",
+      "confidence": 80,
+      "examples": [
+        "Your parcel contains illegal goods."
+      ],
+      "evidence_required": [
+        "Tracking Message",
+        "Phone Number",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "SOCENG_RULE_008",
+      "name": "Electricity Scam",
+      "weight": 25,
+      "keywords": [
+        "electricity disconnected",
+        "bill pending",
+        "discom"
+      ],
+      "regex": [],
+      "explanation": "Fake electricity board threat.",
+      "confidence": 80,
+      "examples": [
+        "Your electricity will be disconnected tonight."
+      ],
+      "evidence_required": [
+        "SMS Screenshot",
+        "Phone Number",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "SOCENG_RULE_009",
+      "name": "Telecom Scam",
+      "weight": 20,
+      "keywords": [
+        "sim blocked",
+        "telecom verification",
+        "kyc sim"
+      ],
+      "regex": [],
+      "explanation": "Fake telecom representative.",
+      "confidence": 80,
+      "examples": [
+        "Update SIM KYC immediately."
+      ],
+      "evidence_required": [
+        "SMS Screenshot",
+        "Phone Number",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "SOCENG_RULE_010",
+      "name": "WhatsApp Impersonation",
+      "weight": 20,
+      "keywords": [
+        "new number",
+        "this is my new number"
+      ],
+      "regex": [],
+      "explanation": "Pretends to be a known contact.",
+      "confidence": 80,
+      "examples": [
+        "Hi dad, this is my new number."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Phone Number",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "SOCENG_RULE_011",
+      "name": "Confidentiality Request",
+      "weight": 15,
+      "keywords": [
+        "don't tell anyone",
+        "keep this confidential"
+      ],
+      "regex": [],
+      "explanation": "Discourages independent verification.",
+      "confidence": 80,
+      "examples": [
+        "Don't tell anyone until completed."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Phone Number",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "SOCENG_RULE_012",
+      "name": "Urgency Tactics",
+      "weight": 20,
+      "keywords": [
+        "act now",
+        "within 10 minutes",
+        "immediately"
+      ],
+      "regex": [],
+      "explanation": "Creates artificial urgency.",
+      "confidence": 80,
+      "examples": [
+        "Complete verification in 10 minutes."
+      ],
+      "evidence_required": [
+        "SMS Screenshot",
+        "Phone Number",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "SOCENG_RULE_013",
+      "name": "Gift/Reward Bait",
+      "weight": 15,
+      "keywords": [
+        "cash prize",
+        "reward",
+        "lucky winner"
+      ],
+      "regex": [],
+      "explanation": "Promises rewards to manipulate.",
+      "confidence": 80,
+      "examples": [
+        "Claim your \u20b950,000 reward."
+      ],
+      "evidence_required": [
+        "Transaction ID",
+        "Phone Number",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "SOCENG_RULE_014",
+      "name": "Investment Mentor",
+      "weight": 25,
+      "keywords": [
+        "investment advisor",
+        "double your money",
+        "guaranteed return"
+      ],
+      "regex": [],
+      "explanation": "Builds trust before investment fraud.",
+      "confidence": 80,
+      "examples": [
+        "Join our VIP investment group."
+      ],
+      "evidence_required": [
+        "Telegram Chat",
+        "Phone Number",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "SOCENG_RULE_015",
+      "name": "Digital Arrest",
+      "weight": 45,
+      "keywords": [
+        "digital arrest",
+        "video verification",
+        "stay on video call"
+      ],
+      "regex": [],
+      "explanation": "Claims victim is under digital arrest.",
+      "confidence": 90,
+      "examples": [
+        "Stay on video call until verification completes."
+      ],
+      "evidence_required": [
+        "Screen Recording",
+        "Phone Number",
+        "Chat Screenshot"
+      ]
+    }
+  ]
+}

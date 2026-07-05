@@ -1,0 +1,260 @@
+{
+  "category": "ROMANCE_SCAM",
+  "display_name": "Romance Scam",
+  "severity": "HIGH",
+  "financial": true,
+  "description": "Fraud where criminals build emotional trust through dating, matrimonial or social media platforms and then request money, gifts, personal information or intimate material for exploitation.",
+  "recommended_actions": [
+    "Stop sending money, gift cards or personal documents to the person.",
+    "Do not share intimate images, OTPs, passwords or banking details.",
+    "Preserve chats, profiles, phone numbers, payment receipts, images and video call records.",
+    "Report financial fraud immediately by calling 1930.",
+    "If blackmail or intimate image threats are involved, report on the National Cyber Crime Reporting Portal."
+  ],
+  "rules": [
+    {
+      "id": "ROMANCE_RULE_001",
+      "name": "Emergency Money Request",
+      "weight": 40,
+      "keywords": [
+        "urgent money",
+        "medical emergency",
+        "hospital bill",
+        "family emergency",
+        "need help financially",
+        "send money urgently",
+        "emergency transfer",
+        "temporary help"
+      ],
+      "regex": [],
+      "explanation": "Requests money after creating emotional trust, often using medical or family emergencies.",
+      "confidence": 94,
+      "examples": [
+        "My mother is in hospital. Please send money urgently.",
+        "I will return it tomorrow. I need temporary help."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Payment Receipt",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "ROMANCE_RULE_002",
+      "name": "Gift Customs or Parcel Fee",
+      "weight": 40,
+      "keywords": [
+        "gift parcel",
+        "customs fee",
+        "airport customs",
+        "courier charge",
+        "release parcel",
+        "foreign gift",
+        "clearance fee",
+        "diplomatic parcel"
+      ],
+      "regex": [],
+      "explanation": "Claims a valuable gift or parcel is stuck with customs and asks the victim to pay clearance charges.",
+      "confidence": 95,
+      "examples": [
+        "I sent you a gift from London. Pay customs fee to release it.",
+        "Airport officer needs clearance charge for your parcel."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Courier Message",
+        "Bank Account Details",
+        "Payment Receipt"
+      ]
+    },
+    {
+      "id": "ROMANCE_RULE_003",
+      "name": "Matrimonial Profile Money Demand",
+      "weight": 35,
+      "keywords": [
+        "matrimonial profile",
+        "shaadi",
+        "jeevansathi",
+        "marriage proposal",
+        "family approval",
+        "wedding expense",
+        "visa processing",
+        "settle abroad"
+      ],
+      "regex": [],
+      "explanation": "Uses matrimonial or marriage pretexts to request money for travel, visa, family or wedding expenses.",
+      "confidence": 90,
+      "examples": [
+        "I found you on matrimonial site. Need visa processing money before marriage.",
+        "Send money for urgent family approval and travel."
+      ],
+      "evidence_required": [
+        "Profile Screenshot",
+        "Chat Screenshot",
+        "Payment Receipt"
+      ]
+    },
+    {
+      "id": "ROMANCE_RULE_004",
+      "name": "Refuses In Person Verification",
+      "weight": 25,
+      "keywords": [
+        "camera not working",
+        "cannot video call",
+        "network issue",
+        "meet later",
+        "currently abroad",
+        "on duty",
+        "army officer",
+        "ship captain"
+      ],
+      "regex": [],
+      "explanation": "Avoids live verification or meeting while continuing to build emotional dependence.",
+      "confidence": 82,
+      "examples": [
+        "I cannot video call because I am on duty abroad.",
+        "Camera is not working. We will meet after you help me."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Profile Screenshot",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "ROMANCE_RULE_005",
+      "name": "Love Bombing and Fast Commitment",
+      "weight": 20,
+      "keywords": [
+        "i love you",
+        "soulmate",
+        "marry you soon",
+        "life partner",
+        "trust me completely",
+        "only you",
+        "future together",
+        "do not tell anyone"
+      ],
+      "regex": [],
+      "explanation": "Rapid emotional commitment is used to build trust and isolate the victim from advice.",
+      "confidence": 78,
+      "examples": [
+        "You are my soulmate. Do not tell anyone about us.",
+        "I will marry you soon, just trust me completely."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Profile Screenshot"
+      ]
+    },
+    {
+      "id": "ROMANCE_RULE_006",
+      "name": "Intimate Image Sextortion",
+      "weight": 45,
+      "keywords": [
+        "send private photo",
+        "video call private",
+        "recorded video",
+        "pay or i will share",
+        "blackmail",
+        "viral video",
+        "share with family",
+        "delete video after payment"
+      ],
+      "regex": [],
+      "explanation": "Uses intimate images or video recordings to extort money or force further actions.",
+      "confidence": 98,
+      "examples": [
+        "Pay now or I will send your video to your family.",
+        "Send money and I will delete the private recording."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Threat Screenshot",
+        "Payment Receipt",
+        "Profile Link"
+      ]
+    },
+    {
+      "id": "ROMANCE_RULE_007",
+      "name": "Foreign Professional Impersonation",
+      "weight": 25,
+      "keywords": [
+        "foreign doctor",
+        "nri",
+        "army officer",
+        "merchant navy",
+        "oil rig",
+        "united nations",
+        "widow",
+        "working abroad"
+      ],
+      "regex": [],
+      "explanation": "Impersonates a high-status foreign or NRI profile to gain trust and explain why meeting is delayed.",
+      "confidence": 84,
+      "examples": [
+        "I am an NRI doctor working abroad and want to marry you.",
+        "I am in merchant navy, so I cannot meet immediately."
+      ],
+      "evidence_required": [
+        "Profile Screenshot",
+        "Chat Screenshot",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "ROMANCE_RULE_008",
+      "name": "Requests Bank Account or Identity Documents",
+      "weight": 35,
+      "keywords": [
+        "send aadhaar",
+        "send pan",
+        "bank details",
+        "account number",
+        "ifsc",
+        "receive funds",
+        "transfer money through you",
+        "open account"
+      ],
+      "regex": [],
+      "explanation": "Requests identity documents or bank details for identity theft, mule accounts or financial abuse.",
+      "confidence": 92,
+      "examples": [
+        "Send Aadhaar and PAN so I can book our tickets.",
+        "Receive funds in your account and transfer to my agent."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Documents Shared",
+        "Bank Transaction ID"
+      ]
+    },
+    {
+      "id": "ROMANCE_RULE_009",
+      "name": "Investment or Crypto Romance Pitch",
+      "weight": 35,
+      "keywords": [
+        "invest together",
+        "crypto profit",
+        "trading platform",
+        "mentor taught me",
+        "financial future",
+        "deposit usdt",
+        "guaranteed profit",
+        "joint investment"
+      ],
+      "regex": [],
+      "explanation": "Combines romantic trust with investment fraud by persuading the victim to deposit into fake platforms.",
+      "confidence": 92,
+      "examples": [
+        "Invest with me on this crypto platform for our future.",
+        "My mentor will help us earn guaranteed profit."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Platform URL",
+        "Payment Receipt"
+      ]
+    }
+  ]
+}

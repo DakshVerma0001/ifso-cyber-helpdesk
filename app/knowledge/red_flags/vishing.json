@@ -1,0 +1,259 @@
+{
+  "category": "VISHING",
+  "display_name": "Vishing",
+  "severity": "HIGH",
+  "financial": true,
+  "description": "Voice-call fraud where criminals impersonate banks, telecom providers, government officials, delivery services, customer support or payment platforms to obtain OTPs, credentials, remote access or money.",
+  "recommended_actions": [
+    "Disconnect suspicious calls and do not call back numbers shared by the caller.",
+    "Never share OTPs, UPI PINs, passwords, CVV, card details or screen-sharing codes.",
+    "Verify claims only through official customer care numbers, bank branches or official apps.",
+    "Report financial fraud immediately by calling 1930.",
+    "Preserve call logs, phone numbers, recordings, screenshots and transaction details."
+  ],
+  "rules": [
+    {
+      "id": "VISHING_RULE_001",
+      "name": "OTP or PIN Requested on Call",
+      "weight": 50,
+      "keywords": [
+        "share otp",
+        "tell otp",
+        "read otp",
+        "confirm otp",
+        "upi pin",
+        "atm pin",
+        "verification code",
+        "security code"
+      ],
+      "regex": [],
+      "explanation": "The caller asks for an OTP, PIN or verification code, which legitimate institutions do not request.",
+      "confidence": 99,
+      "examples": [
+        "Read the OTP to complete bank verification.",
+        "Tell me your UPI PIN to receive refund."
+      ],
+      "evidence_required": [
+        "Call Recording",
+        "Phone Number",
+        "OTP SMS Screenshot"
+      ]
+    },
+    {
+      "id": "VISHING_RULE_002",
+      "name": "Bank Customer Care Impersonation",
+      "weight": 40,
+      "keywords": [
+        "bank customer care",
+        "bank executive",
+        "card department",
+        "fraud department",
+        "account verification",
+        "debit card blocked",
+        "credit card blocked",
+        "net banking issue"
+      ],
+      "regex": [],
+      "explanation": "The caller impersonates bank staff to obtain credentials or force urgent verification.",
+      "confidence": 95,
+      "examples": [
+        "I am calling from your bank's fraud department.",
+        "Your debit card is blocked. Verify details now."
+      ],
+      "evidence_required": [
+        "Call Recording",
+        "Phone Number",
+        "Bank Name Claimed"
+      ]
+    },
+    {
+      "id": "VISHING_RULE_003",
+      "name": "Remote Access App Request",
+      "weight": 45,
+      "keywords": [
+        "install anydesk",
+        "install teamviewer",
+        "install rustdesk",
+        "screen share",
+        "remote support",
+        "share access code",
+        "download support app",
+        "allow permission"
+      ],
+      "regex": [],
+      "explanation": "The caller asks the victim to install a remote access or screen-sharing app, enabling device takeover.",
+      "confidence": 98,
+      "examples": [
+        "Install AnyDesk so I can fix your KYC issue.",
+        "Share the screen access code for bank verification."
+      ],
+      "evidence_required": [
+        "Call Recording",
+        "Installed App Screenshot",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "VISHING_RULE_004",
+      "name": "KYC or Account Blocking Call",
+      "weight": 35,
+      "keywords": [
+        "kyc expired",
+        "update kyc",
+        "account blocked",
+        "account suspended",
+        "wallet blocked",
+        "sim blocked",
+        "last warning",
+        "verification pending"
+      ],
+      "regex": [],
+      "explanation": "Uses KYC expiry or account blocking threats to pressure the victim into sharing data or making payment.",
+      "confidence": 93,
+      "examples": [
+        "Your KYC expired and account will be blocked today.",
+        "Complete verification now to avoid wallet suspension."
+      ],
+      "evidence_required": [
+        "Call Recording",
+        "Phone Number",
+        "SMS Screenshot"
+      ]
+    },
+    {
+      "id": "VISHING_RULE_005",
+      "name": "UPI Refund or Collect Request Call",
+      "weight": 35,
+      "keywords": [
+        "refund pending",
+        "cashback",
+        "approve request",
+        "collect request",
+        "receive money",
+        "payment request",
+        "claim reward",
+        "upi verification"
+      ],
+      "regex": [],
+      "explanation": "The caller tricks the victim into approving a UPI collect request or entering a PIN to supposedly receive money.",
+      "confidence": 94,
+      "examples": [
+        "Approve the UPI request to receive your refund.",
+        "Enter UPI PIN to claim cashback."
+      ],
+      "evidence_required": [
+        "Call Recording",
+        "UPI Screenshot",
+        "Transaction ID"
+      ]
+    },
+    {
+      "id": "VISHING_RULE_006",
+      "name": "Telecom SIM Blocking Threat",
+      "weight": 30,
+      "keywords": [
+        "sim will be blocked",
+        "mobile number suspended",
+        "telecom verification",
+        "trai",
+        "illegal sim",
+        "number deactivated",
+        "reverify mobile",
+        "customer verification"
+      ],
+      "regex": [],
+      "explanation": "Impersonates telecom staff or authorities and threatens SIM deactivation to obtain personal data or money.",
+      "confidence": 90,
+      "examples": [
+        "Your SIM will be blocked due to TRAI complaint.",
+        "Complete mobile verification immediately."
+      ],
+      "evidence_required": [
+        "Call Recording",
+        "Phone Number",
+        "Caller Claim"
+      ]
+    },
+    {
+      "id": "VISHING_RULE_007",
+      "name": "Police CBI or Customs Threat",
+      "weight": 40,
+      "keywords": [
+        "police officer",
+        "cbi officer",
+        "customs officer",
+        "crime branch",
+        "money laundering",
+        "illegal parcel",
+        "arrest warrant",
+        "case registered"
+      ],
+      "regex": [],
+      "explanation": "Uses law enforcement impersonation and criminal allegations to scare the victim into compliance.",
+      "confidence": 95,
+      "examples": [
+        "This is CBI. Your Aadhaar is linked to money laundering.",
+        "Customs found illegal parcel in your name."
+      ],
+      "evidence_required": [
+        "Call Recording",
+        "Phone Number",
+        "Threat Screenshot"
+      ]
+    },
+    {
+      "id": "VISHING_RULE_008",
+      "name": "Card CVV or Net Banking Details",
+      "weight": 45,
+      "keywords": [
+        "card number",
+        "cvv",
+        "expiry date",
+        "net banking password",
+        "login id",
+        "debit card details",
+        "credit card details",
+        "atm card"
+      ],
+      "regex": [],
+      "explanation": "The caller requests confidential card or net banking details.",
+      "confidence": 98,
+      "examples": [
+        "Confirm your card number, expiry and CVV.",
+        "Tell your net banking login to verify account."
+      ],
+      "evidence_required": [
+        "Call Recording",
+        "Phone Number",
+        "Details Shared"
+      ]
+    },
+    {
+      "id": "VISHING_RULE_009",
+      "name": "Urgent Time Pressure",
+      "weight": 20,
+      "keywords": [
+        "immediately",
+        "within 5 minutes",
+        "urgent",
+        "last chance",
+        "do not disconnect",
+        "stay on call",
+        "act now",
+        "final warning"
+      ],
+      "regex": [],
+      "explanation": "Uses pressure and continuous calling to prevent the victim from independently verifying the claim.",
+      "confidence": 82,
+      "examples": [
+        "Do not disconnect or your account will be frozen.",
+        "You have five minutes to complete verification."
+      ],
+      "evidence_required": [
+        "Call Recording",
+        "Call Log",
+        "Phone Number"
+      ]
+    }
+  ]
+}

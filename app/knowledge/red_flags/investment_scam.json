@@ -1,0 +1,292 @@
+{
+  "category": "INVESTMENT_SCAM",
+  "display_name": "Investment Scam",
+  "severity": "CRITICAL",
+  "financial": true,
+  "description": "Fraudsters promise unrealistic returns through fake trading platforms, crypto schemes, task-based investments, IPO allotments or wealth management offers to steal deposits and personal information.",
+  "recommended_actions": [
+    "Do not transfer more money to unlock withdrawals or profits.",
+    "Verify brokers and investment platforms through SEBI, RBI or official exchange records.",
+    "Report financial fraud immediately by calling 1930.",
+    "Preserve chats, bank receipts, UPI IDs, wallet addresses, app links and website URLs.",
+    "Contact your bank to attempt transaction blocking or recall."
+  ],
+  "rules": [
+    {
+      "id": "INVESTMENT_RULE_001",
+      "name": "Guaranteed High Returns",
+      "weight": 45,
+      "keywords": [
+        "guaranteed returns",
+        "fixed profit",
+        "daily profit",
+        "double money",
+        "risk free investment",
+        "assured return",
+        "100% profit",
+        "monthly income guaranteed"
+      ],
+      "regex": [
+        "\\b\\d{2,3}%\\s*(?:return|profit|roi)\\b"
+      ],
+      "explanation": "Promises unusually high or guaranteed returns, which is a strong indicator of investment fraud.",
+      "confidence": 96,
+      "examples": [
+        "Invest Rs 5000 and get guaranteed 20% daily profit.",
+        "Risk free plan with assured monthly income."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Investment Plan Screenshot",
+        "Payment Receipt"
+      ]
+    },
+    {
+      "id": "INVESTMENT_RULE_002",
+      "name": "Withdrawal Blocked Until Fee",
+      "weight": 45,
+      "keywords": [
+        "withdrawal blocked",
+        "withdrawal pending",
+        "pay tax to withdraw",
+        "unlock withdrawal",
+        "release profit",
+        "account frozen",
+        "verification fee",
+        "processing fee"
+      ],
+      "regex": [],
+      "explanation": "Victims are asked to pay taxes, fees or verification charges before withdrawing fake profits.",
+      "confidence": 98,
+      "examples": [
+        "Pay 18% GST to release your trading profit.",
+        "Your withdrawal is pending. Deposit verification fee to unlock."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Platform Screenshot",
+        "Bank Transaction ID"
+      ]
+    },
+    {
+      "id": "INVESTMENT_RULE_003",
+      "name": "Fake Trading App or Website",
+      "weight": 40,
+      "keywords": [
+        "download trading app",
+        "install trading app",
+        "private trading platform",
+        "vip trading app",
+        "admin panel",
+        "recharge wallet",
+        "trading wallet",
+        "deposit to app"
+      ],
+      "regex": [
+        "\\.apk\\b",
+        "https?:\\/\\/[^\\s]+"
+      ],
+      "explanation": "Directs the victim to a fake app or website that displays fabricated balances and profits.",
+      "confidence": 95,
+      "examples": [
+        "Install our private trading app and recharge your wallet.",
+        "Your profit is visible on the platform. Deposit more to upgrade."
+      ],
+      "evidence_required": [
+        "App Screenshot",
+        "APK File",
+        "Website URL",
+        "Payment Receipt"
+      ]
+    },
+    {
+      "id": "INVESTMENT_RULE_004",
+      "name": "Crypto or Forex Scheme",
+      "weight": 35,
+      "keywords": [
+        "crypto investment",
+        "forex trading",
+        "bitcoin mining",
+        "usdt investment",
+        "binance transfer",
+        "crypto wallet",
+        "forex signals",
+        "copy trading"
+      ],
+      "regex": [],
+      "explanation": "Uses crypto, forex or wallet transfers to move funds into hard-to-recover channels.",
+      "confidence": 92,
+      "examples": [
+        "Send USDT to this wallet and earn daily forex profit.",
+        "Join our crypto mining plan for guaranteed returns."
+      ],
+      "evidence_required": [
+        "Wallet Address",
+        "Transaction Hash",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "INVESTMENT_RULE_005",
+      "name": "SEBI RBI or Exchange Impersonation",
+      "weight": 30,
+      "keywords": [
+        "sebi registered",
+        "rbi approved",
+        "nse approved",
+        "bse approved",
+        "official trading partner",
+        "licensed broker",
+        "certificate attached",
+        "government approved investment"
+      ],
+      "regex": [],
+      "explanation": "Misuses names of Indian regulators or exchanges to appear legitimate without verifiable registration.",
+      "confidence": 90,
+      "examples": [
+        "We are SEBI registered. Deposit today for premium plan.",
+        "RBI approved investment scheme with fixed profit."
+      ],
+      "evidence_required": [
+        "Certificate Screenshot",
+        "Website URL",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "INVESTMENT_RULE_006",
+      "name": "Telegram WhatsApp Investment Group",
+      "weight": 30,
+      "keywords": [
+        "telegram group",
+        "whatsapp group",
+        "vip group",
+        "premium group",
+        "investment mentor",
+        "trading expert",
+        "portfolio manager",
+        "group profit"
+      ],
+      "regex": [],
+      "explanation": "Uses private groups and fake testimonials to build trust before asking for investment deposits.",
+      "confidence": 90,
+      "examples": [
+        "Join our VIP Telegram group for guaranteed profits.",
+        "Our WhatsApp members earned Rs 50000 today."
+      ],
+      "evidence_required": [
+        "Group Link",
+        "Chat Screenshot",
+        "Admin Phone Number"
+      ]
+    },
+    {
+      "id": "INVESTMENT_RULE_007",
+      "name": "Small Profit Then Larger Deposit",
+      "weight": 30,
+      "keywords": [
+        "upgrade plan",
+        "increase investment",
+        "higher level",
+        "premium plan",
+        "vip plan",
+        "deposit more",
+        "recharge more",
+        "bigger profit"
+      ],
+      "regex": [],
+      "explanation": "Shows small initial profits or successful withdrawals to convince the victim to deposit larger amounts.",
+      "confidence": 88,
+      "examples": [
+        "You completed level 1. Deposit more to unlock VIP profit.",
+        "Recharge Rs 50000 to move to higher earning plan."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Platform Screenshot",
+        "Transaction History"
+      ]
+    },
+    {
+      "id": "INVESTMENT_RULE_008",
+      "name": "Fake IPO or Pre IPO Allotment",
+      "weight": 25,
+      "keywords": [
+        "ipo allotment",
+        "pre ipo",
+        "grey market",
+        "guaranteed ipo",
+        "demat verification",
+        "apply ipo",
+        "share allotment",
+        "premium listing"
+      ],
+      "regex": [],
+      "explanation": "Promises guaranteed IPO or pre-IPO allotment outside official broker and exchange channels.",
+      "confidence": 86,
+      "examples": [
+        "Guaranteed IPO allotment available. Transfer money today.",
+        "Pre-IPO shares at discount for selected investors."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Bank Account Details",
+        "Payment Receipt"
+      ]
+    },
+    {
+      "id": "INVESTMENT_RULE_009",
+      "name": "Task Based Investment Recharge",
+      "weight": 35,
+      "keywords": [
+        "complete task",
+        "recharge task",
+        "merchant task",
+        "prepaid task",
+        "order grabbing",
+        "earn commission",
+        "unlock task",
+        "part time earning"
+      ],
+      "regex": [],
+      "explanation": "Combines job or task fraud with repeated investment-style deposits to unlock commissions.",
+      "confidence": 92,
+      "examples": [
+        "Complete prepaid merchant tasks to earn commission.",
+        "Recharge Rs 10000 to unlock the next task."
+      ],
+      "evidence_required": [
+        "Task Screenshot",
+        "Chat Screenshot",
+        "Payment Receipt"
+      ]
+    },
+    {
+      "id": "INVESTMENT_RULE_010",
+      "name": "Urgent Limited Slot Pressure",
+      "weight": 20,
+      "keywords": [
+        "limited slots",
+        "today only",
+        "last chance",
+        "urgent deposit",
+        "market closing",
+        "offer expires",
+        "act fast",
+        "join immediately"
+      ],
+      "regex": [],
+      "explanation": "Creates urgency to prevent independent verification of the investment offer.",
+      "confidence": 82,
+      "examples": [
+        "Only 5 slots left. Deposit before market closing.",
+        "Today only plan. Join immediately for fixed profit."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Phone Number",
+        "Payment Request"
+      ]
+    }
+  ]
+}

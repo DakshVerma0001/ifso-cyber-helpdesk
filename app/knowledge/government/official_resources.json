@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "last_verified": "2026-07-02",
+  "resources": {
+    "cybercrime_portal": {
+      "name": "National Cyber Crime Reporting Portal",
+      "url": "https://cybercrime.gov.in",
+      "purpose": "Online cybercrime complaint registration"
+    },
+    "financial_fraud_helpline": {
+      "name": "National Cyber Financial Fraud Helpline",
+      "number": "1930",
+      "availability": "24x7",
+      "purpose": "Immediate reporting of financial cyber fraud"
+    },
+    "emergency": {
+      "name": "National Emergency Response",
+      "number": "112"
+    },
+    "women_helpline": {
+      "name": "Women Helpline",
+      "number": "181"
+    }
+  }
+}

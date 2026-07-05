@@ -1,0 +1,87 @@
+{
+  "category": "QR_CODE_FRAUD",
+  "display_name": "QR Code Fraud",
+  "severity": "CRITICAL",
+  "financial": true,
+  "description": "Fraud involving malicious QR codes that trick victims into authorising payments instead of receiving money.",
+  "recommended_actions": [
+    "Never scan QR codes to receive money.",
+    "Contact your bank immediately.",
+    "Call 1930.",
+    "Preserve transaction details.",
+    "Report the QR code if available."
+  ],
+  "prevention_tips": [
+    "Scan QR codes only from trusted sources.",
+    "Read payment confirmation carefully.",
+    "Verify the merchant.",
+    "Never share your UPI PIN.",
+    "Enable transaction notifications."
+  ],
+  "rules": [
+    {
+      "id": "QR_RULE_001",
+      "name": "Receive Money QR",
+      "weight": 50,
+      "keywords": [
+        "scan qr",
+        "receive payment",
+        "collect money",
+        "scan to receive",
+        "qr payment"
+      ],
+      "regex": [],
+      "explanation": "Victim is asked to scan a QR code to receive money.",
+      "confidence": 100,
+      "examples": [
+        "Scan this QR to receive ₹5000."
+      ],
+      "evidence_required": [
+        "QR Screenshot",
+        "Transaction ID"
+      ]
+    },
+    {
+      "id": "QR_RULE_002",
+      "name": "Refund QR",
+      "weight": 35,
+      "keywords": [
+        "refund",
+        "cashback",
+        "reward",
+        "return money"
+      ],
+      "regex": [],
+      "explanation": "Uses refund claims to convince victims to scan QR codes.",
+      "confidence": 90,
+      "examples": [
+        "Scan this QR to receive your refund."
+      ],
+      "evidence_required": [
+        "Screenshot"
+      ]
+    },
+    {
+      "id": "QR_RULE_003",
+      "name": "Marketplace Payment Scam",
+      "weight": 30,
+      "keywords": [
+        "olx",
+        "quikr",
+        "facebook marketplace",
+        "buyer",
+        "seller"
+      ],
+      "regex": [],
+      "explanation": "Fraud targeting buyers and sellers on online marketplaces.",
+      "confidence": 85,
+      "examples": [
+        "I'm sending payment through QR."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Transaction ID"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "category": "LOAN_APP_FRAUD",
+  "display_name": "Loan App Fraud",
+  "severity": "CRITICAL",
+  "financial": true,
+  "description": "Fraudsters lure victims with instant loans, collect sensitive documents or advance payments, install malicious apps and later extort or steal money.",
+  "recommended_actions": [
+    "Do not pay processing fees before loan disbursal.",
+    "Install loan apps only from trusted sources.",
+    "Verify the lender with RBI before applying.",
+    "Report the fraud immediately by calling 1930.",
+    "Preserve chats, payment receipts, APKs and call records."
+  ],
+  "rules": [
+    {
+      "id": "LOAN_RULE_001",
+      "name": "Instant Loan Offer",
+      "weight": 30,
+      "keywords": [
+        "instant loan",
+        "loan in 5 minutes",
+        "quick loan",
+        "instant approval",
+        "fast loan"
+      ],
+      "regex": [],
+      "explanation": "Promises instant loan approval with minimal checks.",
+      "confidence": 92,
+      "examples": [
+        "Get \u20b95 lakh loan in 5 minutes.",
+        "Instant loan approved without paperwork."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Phone Number",
+        "Loan App Link"
+      ]
+    },
+    {
+      "id": "LOAN_RULE_002",
+      "name": "No CIBIL Required",
+      "weight": 25,
+      "keywords": [
+        "no cibil",
+        "without cibil",
+        "bad credit accepted",
+        "loan without credit score",
+        "guaranteed approval"
+      ],
+      "regex": [],
+      "explanation": "Claims loans are approved regardless of credit history.",
+      "confidence": 90,
+      "examples": [
+        "No CIBIL? No problem!",
+        "Guaranteed approval even with bad credit."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Loan App Link",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "LOAN_RULE_003",
+      "name": "Processing Fee Request",
+      "weight": 40,
+      "keywords": [
+        "processing fee",
+        "pay fee",
+        "loan processing charges",
+        "advance payment",
+        "file charges"
+      ],
+      "regex": [],
+      "explanation": "Demands advance payment before loan disbursal.",
+      "confidence": 97,
+      "examples": [
+        "Pay \u20b92,999 processing fee to release your loan.",
+        "Deposit file charges before disbursal."
+      ],
+      "evidence_required": [
+        "Transaction ID",
+        "Payment Receipt",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "LOAN_RULE_004",
+      "name": "Insurance or GST Charges",
+      "weight": 30,
+      "keywords": [
+        "insurance fee",
+        "gst charges",
+        "security deposit",
+        "loan insurance",
+        "tax payment"
+      ],
+      "regex": [],
+      "explanation": "Requests fake insurance or GST payments.",
+      "confidence": 94,
+      "examples": [
+        "Pay GST before loan transfer.",
+        "Insurance fee required for approval."
+      ],
+      "evidence_required": [
+        "Transaction ID",
+        "Bank Statement",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "LOAN_RULE_005",
+      "name": "Aadhaar and PAN Collection",
+      "weight": 20,
+      "keywords": [
+        "aadhaar upload",
+        "pan upload",
+        "upload documents",
+        "kyc documents",
+        "identity proof"
+      ],
+      "regex": [],
+      "explanation": "Collects sensitive identity documents for misuse.",
+      "confidence": 88,
+      "examples": [
+        "Upload Aadhaar and PAN for verification.",
+        "Send your KYC documents on WhatsApp."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Shared Documents",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "LOAN_RULE_006",
+      "name": "APK Installation",
+      "weight": 45,
+      "keywords": [
+        "download apk",
+        "install app",
+        "loan apk",
+        "unknown app",
+        "install from link"
+      ],
+      "regex": [],
+      "explanation": "Shares APK files outside official app stores.",
+      "confidence": 99,
+      "examples": [
+        "Install this APK to receive your loan.",
+        "Download our app from this link."
+      ],
+      "evidence_required": [
+        "APK File",
+        "Download Link",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "LOAN_RULE_007",
+      "name": "WhatsApp Loan Agent",
+      "weight": 20,
+      "keywords": [
+        "whatsapp loan",
+        "loan agent",
+        "loan executive",
+        "contact on whatsapp",
+        "loan officer"
+      ],
+      "regex": [],
+      "explanation": "Conducts the entire loan process over messaging apps.",
+      "confidence": 87,
+      "examples": [
+        "Contact our loan officer on WhatsApp.",
+        "Loan approval only through WhatsApp."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Phone Number",
+        "WhatsApp Export"
+      ]
+    },
+    {
+      "id": "LOAN_RULE_008",
+      "name": "Fake RBI Registration",
+      "weight": 25,
+      "keywords": [
+        "rbi approved",
+        "rbi registered",
+        "nbfc registered",
+        "licensed lender",
+        "government approved"
+      ],
+      "regex": [],
+      "explanation": "Falsely claims RBI or NBFC approval.",
+      "confidence": 90,
+      "examples": [
+        "We are RBI approved.",
+        "Government registered NBFC."
+      ],
+      "evidence_required": [
+        "Website URL",
+        "Chat Screenshot",
+        "Advertisement"
+      ]
+    },
+    {
+      "id": "LOAN_RULE_009",
+      "name": "Salary Advance Scam",
+      "weight": 15,
+      "keywords": [
+        "salary advance",
+        "advance salary",
+        "employee loan",
+        "instant salary",
+        "payday loan"
+      ],
+      "regex": [],
+      "explanation": "Promises salary advances after upfront payment.",
+      "confidence": 84,
+      "examples": [
+        "Instant salary advance available.",
+        "Pay verification fee for salary advance."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Transaction ID",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "LOAN_RULE_010",
+      "name": "Recovery and Blackmail",
+      "weight": 45,
+      "keywords": [
+        "contact list",
+        "legal notice",
+        "morphed photos",
+        "recovery agent",
+        "defamation"
+      ],
+      "regex": [],
+      "explanation": "Threatens victims using stolen contacts or personal data.",
+      "confidence": 98,
+      "examples": [
+        "We will send notices to all your contacts.",
+        "Pay immediately or your photos will be shared."
+      ],
+      "evidence_required": [
+        "Call Recording",
+        "Chat Screenshot",
+        "Screenshot of Threat"
+      ]
+    }
+  ]
+}

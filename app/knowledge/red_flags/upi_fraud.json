@@ -1,0 +1,131 @@
+{
+  "category": "UPI_FRAUD",
+  "display_name": "UPI Fraud",
+  "severity": "CRITICAL",
+  "financial": true,
+  "description": "Fraud involving Unified Payments Interface (UPI) transactions through deceptive payment requests, fake collect requests, malicious links or social engineering techniques.",
+  "recommended_actions": [
+    "Immediately contact your bank.",
+    "Call 1930 without delay.",
+    "Report the incident on the National Cyber Crime Reporting Portal.",
+    "Do not approve unknown collect requests.",
+    "Preserve transaction receipts and screenshots."
+  ],
+  "prevention_tips": [
+    "Never approve unknown collect requests.",
+    "Verify the recipient before making payments.",
+    "Never share your UPI PIN.",
+    "Enable transaction alerts.",
+    "Keep your UPI application updated."
+  ],
+  "rules": [
+    {
+      "id": "UPI_RULE_001",
+      "name": "Collect Request Scam",
+      "weight": 45,
+      "keywords": [
+        "collect request",
+        "approve request",
+        "accept payment request",
+        "pending collect request",
+        "payment request"
+      ],
+      "regex": [],
+      "explanation": "Victim is asked to approve a collect request.",
+      "confidence": 95,
+      "examples": [
+        "Approve the collect request to receive your refund.",
+        "Accept the payment request to claim your prize."
+      ],
+      "evidence_required": [
+        "Transaction ID",
+        "UPI ID",
+        "Screenshot"
+      ]
+    },
+    {
+      "id": "UPI_RULE_002",
+      "name": "UPI PIN Request",
+      "weight": 50,
+      "keywords": [
+        "share upi pin",
+        "enter upi pin",
+        "verify upi pin",
+        "confirm pin"
+      ],
+      "regex": [],
+      "explanation": "Attempts to obtain the victim's UPI PIN.",
+      "confidence": 100,
+      "examples": [
+        "Enter your UPI PIN to receive money."
+      ],
+      "evidence_required": [
+        "Screenshot"
+      ]
+    },
+    {
+      "id": "UPI_RULE_003",
+      "name": "Refund Scam",
+      "weight": 25,
+      "keywords": [
+        "refund",
+        "cashback",
+        "reward",
+        "receive money",
+        "claim refund"
+      ],
+      "regex": [],
+      "explanation": "Uses refunds or cashback to trick victims.",
+      "confidence": 80,
+      "examples": [
+        "Claim your refund by approving this request."
+      ],
+      "evidence_required": [
+        "Transaction Receipt",
+        "Screenshot"
+      ]
+    },
+    {
+      "id": "UPI_RULE_004",
+      "name": "Payment Link Scam",
+      "weight": 30,
+      "keywords": [
+        "payment link",
+        "upi link",
+        "click payment",
+        "receive payment link"
+      ],
+      "regex": [],
+      "explanation": "Fraud through malicious payment links.",
+      "confidence": 85,
+      "examples": [
+        "Click this payment link to receive ₹5000."
+      ],
+      "evidence_required": [
+        "URL",
+        "Screenshot"
+      ]
+    },
+    {
+      "id": "UPI_RULE_005",
+      "name": "Fake Customer Support",
+      "weight": 35,
+      "keywords": [
+        "customer care",
+        "technical support",
+        "payment support",
+        "bank executive"
+      ],
+      "regex": [],
+      "explanation": "Fraudster impersonates official support.",
+      "confidence": 90,
+      "examples": [
+        "I am calling from your bank's UPI support team."
+      ],
+      "evidence_required": [
+        "Phone Number",
+        "Call Recording"
+      ]
+    }
+  ]
+}

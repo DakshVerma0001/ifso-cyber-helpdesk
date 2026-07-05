@@ -1,0 +1,89 @@
+{
+  "category": "COMMON",
+  "display_name": "Common Fraud Indicators",
+  "severity": "MEDIUM",
+  "financial": false,
+  "description": "Common red flags observed across multiple cyber fraud categories.",
+  "recommended_actions": [
+    "Do not respond immediately.",
+    "Verify the sender through official channels.",
+    "Do not click unknown links.",
+    "Never share OTPs, PINs or passwords.",
+    "Report suspicious activity to 1930 if financial loss is involved."
+  ],
+  "prevention_tips": [
+    "Be cautious of urgency.",
+    "Always verify identities.",
+    "Use official websites only.",
+    "Enable two-factor authentication.",
+    "Keep devices updated."
+  ],
+  "rules": [
+    {
+      "id": "COMMON_RULE_001",
+      "name": "Urgency",
+      "weight": 20,
+      "keywords": [
+        "urgent",
+        "immediately",
+        "act now",
+        "limited time",
+        "within 5 minutes"
+      ],
+      "regex": [],
+      "explanation": "Creates urgency to pressure the victim.",
+      "confidence": 80,
+      "examples": [
+        "Act now or your account will be blocked."
+      ],
+      "evidence_required": [
+        "Screenshot"
+      ]
+    },
+    {
+      "id": "COMMON_RULE_002",
+      "name": "Authority Impersonation",
+      "weight": 30,
+      "keywords": [
+        "rbi",
+        "police",
+        "cbi",
+        "government",
+        "court",
+        "income tax"
+      ],
+      "regex": [],
+      "explanation": "Impersonates an authority to gain trust.",
+      "confidence": 90,
+      "examples": [
+        "This is an official notice from RBI."
+      ],
+      "evidence_required": [
+        "Screenshot",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "COMMON_RULE_003",
+      "name": "Sensitive Information Request",
+      "weight": 40,
+      "keywords": [
+        "password",
+        "otp",
+        "cvv",
+        "atm pin",
+        "upi pin",
+        "credit card"
+      ],
+      "regex": [],
+      "explanation": "Requests confidential financial information.",
+      "confidence": 95,
+      "examples": [
+        "Share your CVV to verify your card."
+      ],
+      "evidence_required": [
+        "Screenshot"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "category": "OTP_FRAUD",
+  "display_name": "OTP Fraud",
+  "severity": "CRITICAL",
+  "financial": true,
+  "description": "Victims are deceived into sharing One-Time Passwords (OTPs) or authentication codes, enabling unauthorized access to bank accounts or digital payment services.",
+  "recommended_actions": [
+    "Stop all communication with the suspected fraudster.",
+    "Never share OTPs or authentication codes with anyone.",
+    "Immediately contact your bank or payment service provider.",
+    "Report the incident by calling 1930 as soon as possible.",
+    "Preserve all messages, screenshots, call logs and transaction details."
+  ],
+  "rules": [
+    {
+      "id": "OTP_RULE_001",
+      "name": "Direct OTP Request",
+      "weight": 45,
+      "keywords": [
+        "share otp",
+        "tell otp",
+        "read otp",
+        "confirm otp",
+        "one time password",
+        "verification code",
+        "authentication code",
+        "security code"
+      ],
+      "regex": [],
+      "explanation": "The message directly asks the victim to reveal an OTP or authentication code.",
+      "confidence": 95,
+      "examples": [
+        "Share your OTP to complete KYC.",
+        "Tell me the verification code you received."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Phone Number",
+        "Transaction ID"
+      ]
+    },
+    {
+      "id": "OTP_RULE_002",
+      "name": "Bank Verification Pretext",
+      "weight": 25,
+      "keywords": [
+        "verify your bank account",
+        "complete bank verification",
+        "account verification",
+        "bank verification",
+        "verify account"
+      ],
+      "regex": [],
+      "explanation": "The message claims that an OTP is required for account verification.",
+      "confidence": 90,
+      "examples": [
+        "Verify your bank account by sharing the OTP.",
+        "Complete account verification using the OTP sent to your phone."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Phone Number",
+        "SMS Screenshot"
+      ]
+    },
+    {
+      "id": "OTP_RULE_003",
+      "name": "KYC Update Request",
+      "weight": 20,
+      "keywords": [
+        "kyc pending",
+        "complete kyc",
+        "update kyc",
+        "kyc expired",
+        "kyc verification"
+      ],
+      "regex": [],
+      "explanation": "The message uses KYC updates as a reason to obtain an OTP.",
+      "confidence": 88,
+      "examples": [
+        "Your KYC has expired. Share the OTP to update it.",
+        "Complete KYC verification using the OTP."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Phone Number",
+        "SMS Screenshot"
+      ]
+    },
+    {
+      "id": "OTP_RULE_004",
+      "name": "Account Suspension Threat",
+      "weight": 20,
+      "keywords": [
+        "account suspended",
+        "account blocked",
+        "account will be blocked",
+        "account deactivated",
+        "account frozen"
+      ],
+      "regex": [],
+      "explanation": "Creates urgency by threatening account suspension unless the OTP is shared.",
+      "confidence": 90,
+      "examples": [
+        "Your account will be blocked unless you share the OTP.",
+        "Immediate verification required to avoid account suspension."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "SMS Screenshot",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "OTP_RULE_005",
+      "name": "Reward or Cashback Claim",
+      "weight": 15,
+      "keywords": [
+        "claim reward",
+        "claim cashback",
+        "cash reward",
+        "reward credited",
+        "bonus reward"
+      ],
+      "regex": [],
+      "explanation": "Promises rewards or cashback while requesting OTP verification.",
+      "confidence": 82,
+      "examples": [
+        "Claim your cashback by sharing the OTP.",
+        "Your reward is ready. Verify using the OTP."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "SMS Screenshot",
+        "Transaction ID"
+      ]
+    },
+    {
+      "id": "OTP_RULE_006",
+      "name": "Refund Processing",
+      "weight": 20,
+      "keywords": [
+        "refund initiated",
+        "refund processing",
+        "receive refund",
+        "refund verification",
+        "refund otp"
+      ],
+      "regex": [],
+      "explanation": "Pretends to process a refund and asks for an OTP.",
+      "confidence": 90,
+      "examples": [
+        "Share the OTP to receive your refund.",
+        "Refund verification pending. Tell us the OTP."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Transaction ID",
+        "SMS Screenshot"
+      ]
+    },
+    {
+      "id": "OTP_RULE_007",
+      "name": "Customer Support Impersonation",
+      "weight": 30,
+      "keywords": [
+        "customer support",
+        "bank executive",
+        "bank officer",
+        "official representative",
+        "technical support"
+      ],
+      "regex": [],
+      "explanation": "Impersonates legitimate support personnel to gain trust before requesting an OTP.",
+      "confidence": 93,
+      "examples": [
+        "I am calling from your bank. Please share the OTP.",
+        "Our technical support team needs the OTP to resolve the issue."
+      ],
+      "evidence_required": [
+        "Call Recording",
+        "Phone Number",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "OTP_RULE_008",
+      "name": "Urgency and Time Pressure",
+      "weight": 15,
+      "keywords": [
+        "immediately",
+        "within 5 minutes",
+        "urgent verification",
+        "act now",
+        "expires today"
+      ],
+      "regex": [],
+      "explanation": "Uses urgency to pressure the victim into revealing an OTP without verification.",
+      "confidence": 80,
+      "examples": [
+        "Act now! Share the OTP within 5 minutes.",
+        "The verification expires today. Send the OTP immediately."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "SMS Screenshot",
+        "Phone Number"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "intents": [
+    {
+      "intent": "classify_message",
+      "examples": [
+        "Check this message",
+        "Is this scam?",
+        "Can you analyze this SMS?"
+      ]
+    },
+    {
+      "intent": "report_fraud",
+      "examples": [
+        "I lost money",
+        "How do I report cybercrime?",
+        "Someone scammed me"
+      ]
+    },
+    {
+      "intent": "fraud_information",
+      "examples": [
+        "What is digital arrest?",
+        "Explain QR fraud",
+        "How does OTP fraud work?"
+      ]
+    }
+  ]
+}

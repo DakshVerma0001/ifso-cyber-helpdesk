@@ -1,0 +1,260 @@
+{
+  "category": "RENTAL_SCAM",
+  "display_name": "Rental Scam",
+  "severity": "HIGH",
+  "financial": true,
+  "description": "Fraud involving fake rental listings, impersonated landlords, false military or company identity, QR code traps, deposits before property verification or phishing for tenant documents.",
+  "recommended_actions": [
+    "Do not pay any deposit before verifying the property and owner through reliable channels.",
+    "Avoid scanning QR codes or approving UPI collect requests to receive money.",
+    "Verify listings through site visits, society office, official documents and trusted platforms.",
+    "Report financial fraud immediately by calling 1930.",
+    "Preserve listing links, chats, phone numbers, bank details, UPI IDs and payment receipts."
+  ],
+  "rules": [
+    {
+      "id": "RENTAL_RULE_001",
+      "name": "Deposit Before Visit",
+      "weight": 40,
+      "keywords": [
+        "pay token",
+        "booking amount",
+        "security deposit first",
+        "pay before visit",
+        "hold the flat",
+        "refundable deposit",
+        "advance payment",
+        "confirm booking"
+      ],
+      "regex": [],
+      "explanation": "Asks for token money or security deposit before the tenant has verified or visited the property.",
+      "confidence": 94,
+      "examples": [
+        "Pay token amount now to hold the flat before visit.",
+        "Deposit is refundable. Transfer today to confirm booking."
+      ],
+      "evidence_required": [
+        "Listing Screenshot",
+        "Chat Screenshot",
+        "Payment Receipt"
+      ]
+    },
+    {
+      "id": "RENTAL_RULE_002",
+      "name": "Too Good To Be True Rent",
+      "weight": 25,
+      "keywords": [
+        "below market rent",
+        "fully furnished cheap",
+        "urgent rent",
+        "low deposit",
+        "no brokerage",
+        "luxury flat cheap",
+        "limited offer",
+        "owner abroad"
+      ],
+      "regex": [],
+      "explanation": "Advertises unusually low rent or attractive terms to lure quick deposits.",
+      "confidence": 82,
+      "examples": [
+        "Luxury 2BHK fully furnished at very low rent. Owner abroad.",
+        "No brokerage and low deposit. Book immediately."
+      ],
+      "evidence_required": [
+        "Listing Screenshot",
+        "Listing URL",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "RENTAL_RULE_003",
+      "name": "Army Defence or Company ID Impersonation",
+      "weight": 35,
+      "keywords": [
+        "army officer",
+        "defence person",
+        "cisf",
+        "crpf",
+        "air force",
+        "company accommodation",
+        "id card attached",
+        "transfer order"
+      ],
+      "regex": [],
+      "explanation": "Uses military, police or company identity documents to create false trust and rush payment.",
+      "confidence": 92,
+      "examples": [
+        "I am an army officer and attached my ID. Pay booking amount.",
+        "Transfer order received, so I need to rent my flat urgently."
+      ],
+      "evidence_required": [
+        "ID Screenshot",
+        "Chat Screenshot",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "RENTAL_RULE_004",
+      "name": "QR Code To Receive Deposit",
+      "weight": 45,
+      "keywords": [
+        "scan qr",
+        "receive money",
+        "refund qr",
+        "upi request",
+        "approve request",
+        "collect request",
+        "enter upi pin",
+        "payment verification"
+      ],
+      "regex": [],
+      "explanation": "Uses QR code or UPI collect request fraud, often claiming it is needed to receive a refund or verify payment.",
+      "confidence": 98,
+      "examples": [
+        "Scan QR and enter UPI PIN to receive refund.",
+        "Approve collect request to verify your bank account."
+      ],
+      "evidence_required": [
+        "QR Code Screenshot",
+        "UPI ID",
+        "Transaction ID",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "RENTAL_RULE_005",
+      "name": "Fake Listing Photos or Reused Images",
+      "weight": 25,
+      "keywords": [
+        "same photos",
+        "google images",
+        "sample photos",
+        "cannot show property",
+        "photos only",
+        "video available",
+        "owner not in city",
+        "keys with guard"
+      ],
+      "regex": [],
+      "explanation": "Relies on photos or videos instead of real property verification and may reuse images from other listings.",
+      "confidence": 82,
+      "examples": [
+        "Owner is not in city, but photos are real. Pay token now.",
+        "Keys are with guard. Booking first, visit later."
+      ],
+      "evidence_required": [
+        "Listing Screenshot",
+        "Property Photos",
+        "Chat Screenshot"
+      ]
+    },
+    {
+      "id": "RENTAL_RULE_006",
+      "name": "Fake Agreement or Police Verification Fee",
+      "weight": 30,
+      "keywords": [
+        "agreement fee",
+        "police verification fee",
+        "rental agreement charge",
+        "society entry fee",
+        "gate pass fee",
+        "document charge",
+        "processing charge",
+        "stamp paper fee"
+      ],
+      "regex": [],
+      "explanation": "Requests extra charges for fake paperwork before the rental relationship is verified.",
+      "confidence": 88,
+      "examples": [
+        "Pay police verification fee before visiting the flat.",
+        "Transfer agreement charge and society gate pass fee."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Payment Receipt",
+        "Document Screenshot"
+      ]
+    },
+    {
+      "id": "RENTAL_RULE_007",
+      "name": "Identity Document Harvesting",
+      "weight": 30,
+      "keywords": [
+        "send aadhaar",
+        "send pan",
+        "passport copy",
+        "company id",
+        "bank statement",
+        "salary slip",
+        "tenant verification",
+        "kyc for rent"
+      ],
+      "regex": [],
+      "explanation": "Collects sensitive tenant documents before property or owner verification, enabling identity misuse.",
+      "confidence": 88,
+      "examples": [
+        "Send Aadhaar, PAN and salary slip before flat visit.",
+        "KYC is required before sharing location."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Documents Shared",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "RENTAL_RULE_008",
+      "name": "Platform Bypass Request",
+      "weight": 25,
+      "keywords": [
+        "message on whatsapp",
+        "avoid platform",
+        "direct payment",
+        "delete listing soon",
+        "outside app",
+        "call directly",
+        "pay to personal account",
+        "no receipt"
+      ],
+      "regex": [],
+      "explanation": "Moves the conversation and payment outside trusted rental platforms to avoid moderation and evidence trails.",
+      "confidence": 84,
+      "examples": [
+        "Message me on WhatsApp and pay directly to personal account.",
+        "Do not pay through app. I will delete listing soon."
+      ],
+      "evidence_required": [
+        "Listing Screenshot",
+        "Chat Screenshot",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "RENTAL_RULE_009",
+      "name": "Urgent Relocation Pressure",
+      "weight": 20,
+      "keywords": [
+        "urgent relocation",
+        "leaving city",
+        "many tenants waiting",
+        "decide fast",
+        "today only",
+        "last chance",
+        "immediate booking",
+        "pay now"
+      ],
+      "regex": [],
+      "explanation": "Creates urgency so the victim pays before verifying ownership, location or legitimacy.",
+      "confidence": 80,
+      "examples": [
+        "Many tenants are waiting. Pay now to confirm.",
+        "I am leaving city today, so decide fast."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Listing Screenshot",
+        "Payment Request"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "category": "KYC_SCAM",
+  "display_name": "KYC Scam",
+  "severity": "CRITICAL",
+  "financial": true,
+  "description": "Fraudsters impersonate banks, payment providers or government agencies and trick victims into updating KYC details to steal credentials, OTPs or money.",
+  "recommended_actions": [
+    "Do not share OTPs, PINs or banking credentials.",
+    "Verify KYC requests only through official bank channels.",
+    "Never install unknown APKs or remote access apps.",
+    "Report financial fraud immediately by calling 1930.",
+    "Preserve messages, screenshots, call logs and transaction details."
+  ],
+  "rules": [
+    {
+      "id": "KYC_RULE_001",
+      "name": "KYC Expired Alert",
+      "weight": 35,
+      "keywords": [
+        "kyc expired",
+        "kyc pending",
+        "update kyc",
+        "complete kyc",
+        "kyc verification"
+      ],
+      "regex": [],
+      "explanation": "Claims the user's KYC has expired to create urgency.",
+      "confidence": 95,
+      "examples": [
+        "Your KYC has expired. Update now to avoid account suspension.",
+        "Complete your KYC verification immediately."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "SMS Screenshot",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "KYC_RULE_002",
+      "name": "Bank KYC Verification",
+      "weight": 30,
+      "keywords": [
+        "bank kyc",
+        "verify bank account",
+        "bank verification",
+        "customer verification",
+        "account verification"
+      ],
+      "regex": [],
+      "explanation": "Pretends to be a bank requesting KYC verification.",
+      "confidence": 92,
+      "examples": [
+        "Complete SBI KYC by sharing the OTP.",
+        "Your HDFC account requires immediate KYC verification."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Phone Number",
+        "SMS Screenshot"
+      ]
+    },
+    {
+      "id": "KYC_RULE_003",
+      "name": "Aadhaar Verification",
+      "weight": 25,
+      "keywords": [
+        "aadhaar verification",
+        "aadhaar update",
+        "aadhaar linked",
+        "uidai verification",
+        "aadhaar kyc"
+      ],
+      "regex": [],
+      "explanation": "Uses Aadhaar verification as a pretext for fraud.",
+      "confidence": 90,
+      "examples": [
+        "Verify your Aadhaar to continue banking.",
+        "Update Aadhaar KYC immediately."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Phone Number",
+        "Email Screenshot"
+      ]
+    },
+    {
+      "id": "KYC_RULE_004",
+      "name": "PAN Verification",
+      "weight": 20,
+      "keywords": [
+        "pan verification",
+        "update pan",
+        "pan card verification",
+        "pan kyc",
+        "link pan"
+      ],
+      "regex": [],
+      "explanation": "Requests PAN verification to steal information.",
+      "confidence": 88,
+      "examples": [
+        "Link your PAN to avoid account blockage.",
+        "Verify PAN details today."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "SMS Screenshot",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "KYC_RULE_005",
+      "name": "UPI KYC Update",
+      "weight": 30,
+      "keywords": [
+        "upi kyc",
+        "phonepe kyc",
+        "gpay kyc",
+        "paytm kyc",
+        "bhim kyc"
+      ],
+      "regex": [],
+      "explanation": "Impersonates UPI platforms requesting fake KYC.",
+      "confidence": 93,
+      "examples": [
+        "Complete PhonePe KYC to continue UPI services.",
+        "Your Google Pay KYC is pending."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "UPI ID",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "KYC_RULE_006",
+      "name": "Wallet Suspension Threat",
+      "weight": 20,
+      "keywords": [
+        "wallet blocked",
+        "wallet suspended",
+        "wallet deactivated",
+        "wallet frozen",
+        "account blocked"
+      ],
+      "regex": [],
+      "explanation": "Threatens suspension if KYC isn't completed.",
+      "confidence": 89,
+      "examples": [
+        "Your Paytm wallet will be blocked today.",
+        "Complete KYC or your wallet will be suspended."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "SMS Screenshot",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "KYC_RULE_007",
+      "name": "APK Installation Request",
+      "weight": 40,
+      "keywords": [
+        "install app",
+        "download apk",
+        "anydesk",
+        "teamviewer",
+        "rustdesk"
+      ],
+      "regex": [],
+      "explanation": "Requests installation of remote access software during KYC.",
+      "confidence": 98,
+      "examples": [
+        "Install this app to complete KYC.",
+        "Download the attached APK for verification."
+      ],
+      "evidence_required": [
+        "APK File",
+        "Chat Screenshot",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "KYC_RULE_008",
+      "name": "Fake RBI/NPCI Notice",
+      "weight": 25,
+      "keywords": [
+        "rbi notice",
+        "npci verification",
+        "reserve bank",
+        "npci kyc",
+        "rbi compliance"
+      ],
+      "regex": [],
+      "explanation": "Uses RBI or NPCI branding to appear legitimate.",
+      "confidence": 90,
+      "examples": [
+        "RBI requires mandatory KYC verification.",
+        "NPCI compliance pending. Update now."
+      ],
+      "evidence_required": [
+        "SMS Screenshot",
+        "Chat Screenshot",
+        "Email Screenshot"
+      ]
+    },
+    {
+      "id": "KYC_RULE_009",
+      "name": "OTP for KYC",
+      "weight": 35,
+      "keywords": [
+        "otp for kyc",
+        "share otp",
+        "verification code",
+        "authentication code",
+        "confirm otp"
+      ],
+      "regex": [],
+      "explanation": "Requests an OTP claiming it is required for KYC.",
+      "confidence": 96,
+      "examples": [
+        "Share the OTP to complete KYC.",
+        "Read the verification code for account activation."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Phone Number",
+        "Transaction ID"
+      ]
+    },
+    {
+      "id": "KYC_RULE_010",
+      "name": "Immediate Account Suspension",
+      "weight": 20,
+      "keywords": [
+        "account suspended",
+        "account frozen",
+        "account blocked",
+        "deactivate account",
+        "last warning"
+      ],
+      "regex": [],
+      "explanation": "Uses fear of account suspension to pressure the victim.",
+      "confidence": 88,
+      "examples": [
+        "Your account will be suspended today if KYC is not updated.",
+        "Last warning: complete KYC immediately."
+      ],
+      "evidence_required": [
+        "SMS Screenshot",
+        "Chat Screenshot",
+        "Phone Number"
+      ]
+    }
+  ]
+}

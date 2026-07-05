@@ -1,0 +1,153 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-07-02",
+  "categories": [
+    {
+      "id": "OTP_FRAUD",
+      "display_name": "OTP Fraud",
+      "severity": "critical",
+      "financial": true,
+      "priority": 1
+    },
+    {
+      "id": "UPI_FRAUD",
+      "display_name": "UPI Fraud",
+      "severity": "critical",
+      "financial": true,
+      "priority": 1
+    },
+    {
+      "id": "QR_CODE_FRAUD",
+      "display_name": "QR Code Fraud",
+      "severity": "high",
+      "financial": true,
+      "priority": 2
+    },
+    {
+      "id": "KYC_SCAM",
+      "display_name": "KYC Scam",
+      "severity": "high",
+      "financial": true,
+      "priority": 2
+    },
+    {
+      "id": "DIGITAL_ARREST",
+      "display_name": "Digital Arrest Scam",
+      "severity": "critical",
+      "financial": true,
+      "priority": 1
+    },
+    {
+      "id": "INVESTMENT_SCAM",
+      "display_name": "Investment Scam",
+      "severity": "critical",
+      "financial": true,
+      "priority": 1
+    },
+    {
+      "id": "STOCK_TIP_SCAM",
+      "display_name": "Stock Tip Scam",
+      "severity": "critical",
+      "financial": true,
+      "priority": 1
+    },
+    {
+      "id": "LOAN_APP_FRAUD",
+      "display_name": "Loan App Fraud",
+      "severity": "high",
+      "financial": true,
+      "priority": 2
+    },
+    {
+      "id": "JOB_SCAM",
+      "display_name": "Job Scam",
+      "severity": "medium",
+      "financial": true,
+      "priority": 3
+    },
+    {
+      "id": "ROMANCE_SCAM",
+      "display_name": "Romance Scam",
+      "severity": "medium",
+      "financial": true,
+      "priority": 3
+    },
+    {
+      "id": "RENTAL_SCAM",
+      "display_name": "Rental Scam",
+      "severity": "medium",
+      "financial": true,
+      "priority": 3
+    },
+    {
+      "id": "FAKE_CUSTOMER_CARE",
+      "display_name": "Fake Customer Care",
+      "severity": "high",
+      "financial": true,
+      "priority": 2
+    },
+    {
+      "id": "PHISHING",
+      "display_name": "Phishing",
+      "severity": "high",
+      "financial": false,
+      "priority": 2
+    },
+    {
+      "id": "SMISHING",
+      "display_name": "Smishing",
+      "severity": "high",
+      "financial": false,
+      "priority": 2
+    },
+    {
+      "id": "VISHING",
+      "display_name": "Vishing",
+      "severity": "high",
+      "financial": false,
+      "priority": 2
+    },
+    {
+      "id": "SIM_SWAP",
+      "display_name": "SIM Swap Fraud",
+      "severity": "critical",
+      "financial": true,
+      "priority": 1
+    },
+    {
+      "id": "CREDIT_CARD_FRAUD",
+      "display_name": "Credit Card Fraud",
+      "severity": "high",
+      "financial": true,
+      "priority": 2
+    },
+    {
+      "id": "MARKETPLACE_SCAM",
+      "display_name": "Marketplace Scam",
+      "severity": "medium",
+      "financial": true,
+      "priority": 3
+    },
+    {
+      "id": "SOCIAL_ENGINEERING",
+      "display_name": "Social Engineering",
+      "severity": "critical",
+      "financial": false,
+      "priority": 1
+    },
+    {
+      "id": "CRYPTO_SCAM",
+      "display_name": "Crypto Scam",
+      "severity": "critical",
+      "financial": true,
+      "priority": 1
+    },
+    {
+      "id": "SAFE",
+      "display_name": "Likely Safe",
+      "severity": "none",
+      "financial": false,
+      "priority": 99
+    }
+  ]
+}

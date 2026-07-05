@@ -1,0 +1,2 @@
+"""BERT module predictor scaffold."""
+

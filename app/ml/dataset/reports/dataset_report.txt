@@ -1,0 +1,48 @@
+IFSO Cyber Fraud Dataset Report
+============================================================
+
+Rows : 87609
+Columns : 5
+
+Columns
+------------------------------
+category
+sub_category
+text
+char_count
+word_count
+
+Missing Values
+------------------------------
+category: 0
+sub_category: 0
+text: 1
+char_count: 0
+word_count: 0
+
+Duplicate Rows : 6017
+
+Category Distribution
+------------------------------
+Online Financial Fraud: 52266
+Online and Social Media Related Crime: 11698
+Any Other Cyber Crime: 10583
+Cyber Attack/ Dependent Crimes: 3608
+RapeGang Rape RGRSexually Abusive Content: 2815
+Sexually Obscene material: 1795
+Hacking  Damage to computercomputer system etc: 1661
+Sexually Explicit Act: 1513
+Cryptocurrency Crime: 476
+Online Gambling  Betting: 433
+Child Pornography CPChild Sexual Abuse Material CSAM: 369
+Online Cyber Trafficking: 175
+Cyber Terrorism: 160
+Ransomware: 56
+Report Unlawful Content: 1
+
+Text Statistics
+------------------------------
+Average Characters : 271.10
+Maximum Characters : 1472
+Minimum Characters : 0
+Average Words : 45.33

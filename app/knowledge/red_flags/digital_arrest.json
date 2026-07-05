@@ -1,0 +1,287 @@
+{
+  "category": "DIGITAL_ARREST",
+  "display_name": "Digital Arrest",
+  "severity": "CRITICAL",
+  "financial": true,
+  "description": "Fraud where criminals impersonate police, CBI, ED, customs, TRAI, courts or other authorities and keep victims on video or voice calls under false arrest threats to extort money or steal information.",
+  "recommended_actions": [
+    "Disconnect the call immediately; Indian law enforcement does not conduct arrests over video calls.",
+    "Do not transfer money for verification, bail, security deposit or account clearance.",
+    "Do not share Aadhaar, PAN, bank details, OTPs, passwords or screen access.",
+    "Report financial fraud immediately by calling 1930.",
+    "Preserve call logs, video call screenshots, phone numbers, bank details, notices and transaction receipts."
+  ],
+  "rules": [
+    {
+      "id": "DIGITAL_ARREST_RULE_001",
+      "name": "Digital Arrest Claim",
+      "weight": 50,
+      "keywords": [
+        "digital arrest",
+        "you are under arrest",
+        "online arrest",
+        "virtual arrest",
+        "house arrest",
+        "do not leave",
+        "stay on video call",
+        "do not disconnect"
+      ],
+      "regex": [],
+      "explanation": "Claims the victim is under digital or virtual arrest, a false concept used in cyber extortion.",
+      "confidence": 99,
+      "examples": [
+        "You are under digital arrest and must stay on video call.",
+        "Do not disconnect or police will come to your house."
+      ],
+      "evidence_required": [
+        "Call Recording",
+        "Video Call Screenshot",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "DIGITAL_ARREST_RULE_002",
+      "name": "Law Enforcement Impersonation",
+      "weight": 45,
+      "keywords": [
+        "cbi officer",
+        "police officer",
+        "crime branch",
+        "ed officer",
+        "customs officer",
+        "narcotics department",
+        "mumbai police",
+        "delhi police"
+      ],
+      "regex": [],
+      "explanation": "Impersonates police, CBI, ED, customs or similar authorities to create fear and compliance.",
+      "confidence": 96,
+      "examples": [
+        "I am calling from CBI regarding a money laundering case.",
+        "This is Mumbai Police cyber cell. Your Aadhaar is misused."
+      ],
+      "evidence_required": [
+        "Call Recording",
+        "Officer Name Claimed",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "DIGITAL_ARREST_RULE_003",
+      "name": "Parcel Drugs or Customs Case",
+      "weight": 40,
+      "keywords": [
+        "illegal parcel",
+        "drugs found",
+        "narcotics parcel",
+        "customs seizure",
+        "fedex parcel",
+        "courier case",
+        "passport seized",
+        "contraband"
+      ],
+      "regex": [],
+      "explanation": "Claims an illegal parcel or customs case is linked to the victim's identity.",
+      "confidence": 95,
+      "examples": [
+        "A parcel in your name contains drugs and passports.",
+        "Customs has seized your courier for illegal items."
+      ],
+      "evidence_required": [
+        "Call Recording",
+        "Courier Message",
+        "Fake Notice Screenshot"
+      ]
+    },
+    {
+      "id": "DIGITAL_ARREST_RULE_004",
+      "name": "Aadhaar PAN or SIM Misuse Allegation",
+      "weight": 35,
+      "keywords": [
+        "aadhaar misuse",
+        "pan misuse",
+        "sim card misuse",
+        "bank account misuse",
+        "identity used",
+        "illegal account",
+        "money laundering",
+        "terror funding"
+      ],
+      "regex": [],
+      "explanation": "Alleges misuse of the victim's identity documents, SIM or bank account to scare them.",
+      "confidence": 93,
+      "examples": [
+        "Your Aadhaar was used in a money laundering case.",
+        "A SIM in your name is involved in illegal activity."
+      ],
+      "evidence_required": [
+        "Call Recording",
+        "Fake Document Screenshot",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "DIGITAL_ARREST_RULE_005",
+      "name": "Fake Court Warrant or Notice",
+      "weight": 40,
+      "keywords": [
+        "court warrant",
+        "arrest warrant",
+        "supreme court notice",
+        "high court notice",
+        "fir registered",
+        "case registered",
+        "legal notice",
+        "non bailable warrant"
+      ],
+      "regex": [],
+      "explanation": "Uses fabricated warrants, FIRs or court notices to intimidate the victim.",
+      "confidence": 94,
+      "examples": [
+        "A non-bailable warrant has been issued against you.",
+        "FIR registered. Download court notice and stay online."
+      ],
+      "evidence_required": [
+        "Notice Screenshot",
+        "Call Recording",
+        "Sender Details"
+      ]
+    },
+    {
+      "id": "DIGITAL_ARREST_RULE_006",
+      "name": "Money Transfer for Verification or Bail",
+      "weight": 50,
+      "keywords": [
+        "security deposit",
+        "verification amount",
+        "bail amount",
+        "clearance fee",
+        "temporary transfer",
+        "safe account",
+        "rbi verification",
+        "refund after verification"
+      ],
+      "regex": [],
+      "explanation": "Demands money for fake verification, bail, clearance or transfer to a so-called safe account.",
+      "confidence": 99,
+      "examples": [
+        "Transfer money to RBI safe account for verification.",
+        "Pay bail amount now or arrest team will arrive."
+      ],
+      "evidence_required": [
+        "Bank Account Details",
+        "UPI ID",
+        "Transaction ID",
+        "Call Recording"
+      ]
+    },
+    {
+      "id": "DIGITAL_ARREST_RULE_007",
+      "name": "Video Investigation Pressure",
+      "weight": 40,
+      "keywords": [
+        "video investigation",
+        "video verification",
+        "camera on",
+        "show your room",
+        "stay alone",
+        "do not talk to anyone",
+        "continuous monitoring",
+        "recording statement"
+      ],
+      "regex": [],
+      "explanation": "Keeps the victim isolated on a video call to maintain control and prevent outside help.",
+      "confidence": 96,
+      "examples": [
+        "Keep camera on and do not speak to family.",
+        "You are under video investigation until clearance."
+      ],
+      "evidence_required": [
+        "Video Call Screenshot",
+        "Call Recording",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "DIGITAL_ARREST_RULE_008",
+      "name": "Confidentiality Threat",
+      "weight": 30,
+      "keywords": [
+        "do not inform anyone",
+        "confidential case",
+        "national security",
+        "do not call family",
+        "do not contact bank",
+        "case secrecy",
+        "surveillance",
+        "legal restriction"
+      ],
+      "regex": [],
+      "explanation": "Orders secrecy to isolate the victim from family, bank staff or police who could stop the fraud.",
+      "confidence": 90,
+      "examples": [
+        "This is a confidential national security case. Do not inform anyone.",
+        "Do not call your bank or family during investigation."
+      ],
+      "evidence_required": [
+        "Call Recording",
+        "Chat Screenshot",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "DIGITAL_ARREST_RULE_009",
+      "name": "Fake Government or Police Document",
+      "weight": 35,
+      "keywords": [
+        "id card attached",
+        "official notice",
+        "government seal",
+        "police letterhead",
+        "case file",
+        "confidential document",
+        "summons",
+        "clearance certificate"
+      ],
+      "regex": [],
+      "explanation": "Sends fake documents, IDs or letterheads to make the impersonation look official.",
+      "confidence": 92,
+      "examples": [
+        "See my police ID card and official notice attached.",
+        "Your case file and summons are attached."
+      ],
+      "evidence_required": [
+        "Document Screenshot",
+        "Chat Screenshot",
+        "Sender Details"
+      ]
+    },
+    {
+      "id": "DIGITAL_ARREST_RULE_010",
+      "name": "Remote Access or Screen Sharing",
+      "weight": 40,
+      "keywords": [
+        "share screen",
+        "install anydesk",
+        "install teamviewer",
+        "download app",
+        "screen monitoring",
+        "allow permission",
+        "access code",
+        "remote verification"
+      ],
+      "regex": [],
+      "explanation": "Requests screen sharing or remote access during the fake investigation to view banking activity or steal credentials.",
+      "confidence": 96,
+      "examples": [
+        "Share your screen while transferring verification amount.",
+        "Install remote verification app and read access code."
+      ],
+      "evidence_required": [
+        "Installed App Screenshot",
+        "Call Recording",
+        "Phone Number"
+      ]
+    }
+  ]
+}

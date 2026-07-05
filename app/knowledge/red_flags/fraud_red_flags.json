@@ -1,0 +1,86 @@
+{
+  "category": "FRAUD_RED_FLAGS",
+  "display_name": "General Fraud Red Flags",
+  "severity": "HIGH",
+  "financial": false,
+  "description": "General behavioural indicators frequently seen in cyber fraud attempts.",
+  "recommended_actions": [
+    "Do not continue the conversation.",
+    "Verify independently.",
+    "Keep evidence.",
+    "Block the fraudster if confirmed.",
+    "Report the incident."
+  ],
+  "prevention_tips": [
+    "Question unexpected offers.",
+    "Never trust unknown callers.",
+    "Don't install unknown apps.",
+    "Avoid clicking suspicious links.",
+    "Check official sources."
+  ],
+  "rules": [
+    {
+      "id": "FRAUD_FLAG_RULE_001",
+      "name": "Too Good To Be True",
+      "weight": 25,
+      "keywords": [
+        "guaranteed profit",
+        "easy money",
+        "double your money",
+        "100% return",
+        "risk free"
+      ],
+      "regex": [],
+      "explanation": "Promises unrealistic financial gains.",
+      "confidence": 90,
+      "examples": [
+        "Double your investment in one week."
+      ],
+      "evidence_required": [
+        "Screenshot"
+      ]
+    },
+    {
+      "id": "FRAUD_FLAG_RULE_002",
+      "name": "Remote Access Request",
+      "weight": 45,
+      "keywords": [
+        "anydesk",
+        "teamviewer",
+        "quicksupport",
+        "screen share",
+        "remote access"
+      ],
+      "regex": [],
+      "explanation": "Attempts to gain remote control of the victim's device.",
+      "confidence": 100,
+      "examples": [
+        "Install AnyDesk so I can help."
+      ],
+      "evidence_required": [
+        "Screenshot"
+      ]
+    },
+    {
+      "id": "FRAUD_FLAG_RULE_003",
+      "name": "Unknown Payment Request",
+      "weight": 35,
+      "keywords": [
+        "advance payment",
+        "processing fee",
+        "registration fee",
+        "security deposit",
+        "pay first"
+      ],
+      "regex": [],
+      "explanation": "Requests payment before providing the promised service.",
+      "confidence": 90,
+      "examples": [
+        "Pay ₹999 to receive your reward."
+      ],
+      "evidence_required": [
+        "Transaction Receipt"
+      ]
+    }
+  ]
+}

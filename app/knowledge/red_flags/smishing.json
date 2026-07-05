@@ -1,0 +1,353 @@
+{
+  "category": "SMISHING",
+  "display_name": "Smishing",
+  "severity": "HIGH",
+  "financial": true,
+  "description": "Fraudulent SMS or messaging-app texts that impersonate banks, government agencies, delivery services, utilities or trusted businesses to steal credentials, OTPs, payment details or money.",
+  "recommended_actions": [
+    "Do not click links in suspicious SMS or chat messages.",
+    "Do not share OTPs, UPI PINs, passwords, Aadhaar, PAN or card details.",
+    "Verify the message only through official apps, websites or customer care numbers.",
+    "Report financial fraud immediately by calling 1930.",
+    "Preserve the SMS, sender ID, phone number, URL, screenshots and transaction details."
+  ],
+  "rules": [
+    {
+      "id": "SMISHING_RULE_001",
+      "name": "Suspicious Link in SMS",
+      "weight": 40,
+      "keywords": [
+        "click link",
+        "click here",
+        "open link",
+        "verify link",
+        "login link",
+        "update link",
+        "bit.ly",
+        "tinyurl",
+        "shorturl",
+        "wa.me"
+      ],
+      "regex": [
+        "https?:\\/\\/[^\\s]+",
+        "\\b(?:bit\\.ly|tinyurl\\.com|shorturl\\.at|cutt\\.ly|t\\.ly)\\/[^\\s]+"
+      ],
+      "explanation": "The message contains a link or shortened URL that may lead to a fake login page, malware download or payment trap.",
+      "confidence": 95,
+      "examples": [
+        "Your bank account will be blocked. Click this link to verify now.",
+        "Update your details immediately: https://example-bank-verify.com"
+      ],
+      "evidence_required": [
+        "SMS Screenshot",
+        "Sender ID",
+        "URL"
+      ]
+    },
+    {
+      "id": "SMISHING_RULE_002",
+      "name": "Bank Account Blocking Threat",
+      "weight": 35,
+      "keywords": [
+        "account blocked",
+        "account will be blocked",
+        "account suspended",
+        "bank account suspended",
+        "debit card blocked",
+        "net banking blocked",
+        "reactivate account",
+        "avoid blockage"
+      ],
+      "regex": [],
+      "explanation": "Creates fear of bank account, debit card or net banking suspension to pressure the victim into clicking a link or sharing information.",
+      "confidence": 93,
+      "examples": [
+        "Your SBI account will be blocked today. Update KYC now.",
+        "Debit card suspended. Click the link to reactivate."
+      ],
+      "evidence_required": [
+        "SMS Screenshot",
+        "Sender ID",
+        "URL"
+      ]
+    },
+    {
+      "id": "SMISHING_RULE_003",
+      "name": "KYC Update SMS",
+      "weight": 35,
+      "keywords": [
+        "kyc expired",
+        "kyc pending",
+        "update kyc",
+        "complete kyc",
+        "kyc verification",
+        "bank kyc",
+        "upi kyc",
+        "wallet kyc"
+      ],
+      "regex": [],
+      "explanation": "Uses fake KYC expiry or verification notices, common in India for bank, wallet and UPI impersonation.",
+      "confidence": 94,
+      "examples": [
+        "Your Paytm KYC is pending. Complete now to avoid wallet suspension.",
+        "Bank KYC expired. Verify details using the link."
+      ],
+      "evidence_required": [
+        "SMS Screenshot",
+        "Sender ID",
+        "Phone Number",
+        "URL"
+      ]
+    },
+    {
+      "id": "SMISHING_RULE_004",
+      "name": "OTP or Verification Code Request",
+      "weight": 45,
+      "keywords": [
+        "share otp",
+        "tell otp",
+        "confirm otp",
+        "verification code",
+        "authentication code",
+        "security code",
+        "otp verification",
+        "read otp"
+      ],
+      "regex": [],
+      "explanation": "The text attempts to obtain an OTP or verification code through SMS, chat or follow-up call.",
+      "confidence": 98,
+      "examples": [
+        "Reply with OTP to complete account verification.",
+        "Our officer will call. Please confirm the OTP received."
+      ],
+      "evidence_required": [
+        "SMS Screenshot",
+        "Phone Number",
+        "OTP SMS Screenshot"
+      ]
+    },
+    {
+      "id": "SMISHING_RULE_005",
+      "name": "UPI Refund or Cashback Link",
+      "weight": 30,
+      "keywords": [
+        "claim refund",
+        "refund pending",
+        "cashback pending",
+        "claim cashback",
+        "upi refund",
+        "receive money",
+        "reward credited",
+        "collect reward"
+      ],
+      "regex": [],
+      "explanation": "Promises refunds, rewards or cashback to lure the victim into opening a payment link, approving a collect request or entering credentials.",
+      "confidence": 90,
+      "examples": [
+        "Your UPI refund is pending. Click to receive money.",
+        "Cashback of Rs 499 credited. Claim now using the link."
+      ],
+      "evidence_required": [
+        "SMS Screenshot",
+        "UPI ID",
+        "Transaction ID",
+        "URL"
+      ]
+    },
+    {
+      "id": "SMISHING_RULE_006",
+      "name": "Electricity Bill Disconnection Threat",
+      "weight": 30,
+      "keywords": [
+        "electricity bill pending",
+        "power disconnected",
+        "electricity disconnected",
+        "bijli bill",
+        "bill not updated",
+        "last date today",
+        "contact electricity officer"
+      ],
+      "regex": [],
+      "explanation": "Impersonates electricity boards or bill payment services and threatens disconnection to force urgent payment or data sharing.",
+      "confidence": 90,
+      "examples": [
+        "Dear customer, your electricity will be disconnected tonight. Pay bill now.",
+        "Bijli bill not updated. Contact officer immediately."
+      ],
+      "evidence_required": [
+        "SMS Screenshot",
+        "Phone Number",
+        "Payment Link",
+        "Transaction ID"
+      ]
+    },
+    {
+      "id": "SMISHING_RULE_007",
+      "name": "Courier or Parcel Delivery Scam",
+      "weight": 25,
+      "keywords": [
+        "parcel held",
+        "delivery failed",
+        "address incomplete",
+        "customs fee",
+        "courier charges",
+        "india post",
+        "speed post",
+        "delivery reschedule"
+      ],
+      "regex": [],
+      "explanation": "Impersonates courier, postal or customs services to collect small payments, card details or identity documents.",
+      "confidence": 88,
+      "examples": [
+        "India Post: Your parcel is held due to incomplete address. Update now.",
+        "Delivery failed. Pay Rs 5 to reschedule your courier."
+      ],
+      "evidence_required": [
+        "SMS Screenshot",
+        "Sender ID",
+        "URL",
+        "Payment Receipt"
+      ]
+    },
+    {
+      "id": "SMISHING_RULE_008",
+      "name": "Traffic Challan or Government Fine",
+      "weight": 25,
+      "keywords": [
+        "e challan",
+        "traffic challan",
+        "pay challan",
+        "pending fine",
+        "parivahan",
+        "mparivahan",
+        "court notice",
+        "lok adalat"
+      ],
+      "regex": [],
+      "explanation": "Uses fake traffic challan, court or government fine messages to push the victim to a fraudulent payment page.",
+      "confidence": 88,
+      "examples": [
+        "Your e-challan is pending. Pay immediately to avoid court action.",
+        "Parivahan notice: traffic fine unpaid. Click to settle."
+      ],
+      "evidence_required": [
+        "SMS Screenshot",
+        "Vehicle Number",
+        "URL",
+        "Payment Receipt"
+      ]
+    },
+    {
+      "id": "SMISHING_RULE_009",
+      "name": "PAN Aadhaar or Tax Verification",
+      "weight": 25,
+      "keywords": [
+        "link pan",
+        "pan aadhaar link",
+        "aadhaar verification",
+        "income tax refund",
+        "tax refund",
+        "itr refund",
+        "pan blocked",
+        "aadhaar update"
+      ],
+      "regex": [],
+      "explanation": "Impersonates income tax, PAN or Aadhaar services to steal identity details or banking credentials.",
+      "confidence": 90,
+      "examples": [
+        "PAN Aadhaar linking failed. Update now to avoid penalty.",
+        "Income tax refund approved. Verify bank account using the link."
+      ],
+      "evidence_required": [
+        "SMS Screenshot",
+        "Sender ID",
+        "URL",
+        "Identity Document Details Shared"
+      ]
+    },
+    {
+      "id": "SMISHING_RULE_010",
+      "name": "APK or Remote Access App Link",
+      "weight": 45,
+      "keywords": [
+        "download apk",
+        "install apk",
+        "install app",
+        "customer support app",
+        "anydesk",
+        "teamviewer",
+        "rustdesk",
+        "screen share"
+      ],
+      "regex": [
+        "\\.apk\\b"
+      ],
+      "explanation": "The message asks the victim to install an APK or remote access app, which can enable device takeover or credential theft.",
+      "confidence": 98,
+      "examples": [
+        "Install this APK to update KYC.",
+        "Download customer support app and share the code."
+      ],
+      "evidence_required": [
+        "SMS Screenshot",
+        "APK File",
+        "Download URL",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "SMISHING_RULE_011",
+      "name": "Card or Net Banking Credential Request",
+      "weight": 40,
+      "keywords": [
+        "card number",
+        "cvv",
+        "expiry date",
+        "atm pin",
+        "debit card details",
+        "credit card details",
+        "net banking password",
+        "login password"
+      ],
+      "regex": [],
+      "explanation": "Attempts to collect payment card, ATM PIN or net banking credentials through a text message or linked form.",
+      "confidence": 97,
+      "examples": [
+        "Verify your debit card number and CVV to unblock account.",
+        "Enter net banking password to receive refund."
+      ],
+      "evidence_required": [
+        "SMS Screenshot",
+        "URL",
+        "Form Screenshot"
+      ]
+    },
+    {
+      "id": "SMISHING_RULE_012",
+      "name": "Urgent Final Warning",
+      "weight": 20,
+      "keywords": [
+        "urgent",
+        "immediately",
+        "last warning",
+        "final notice",
+        "within 24 hours",
+        "today only",
+        "act now",
+        "avoid penalty"
+      ],
+      "regex": [],
+      "explanation": "Uses urgency, deadlines or penalties to reduce verification and push the victim into quick action.",
+      "confidence": 82,
+      "examples": [
+        "Final notice: verify within 24 hours or services will stop.",
+        "Act now to avoid penalty."
+      ],
+      "evidence_required": [
+        "SMS Screenshot",
+        "Sender ID",
+        "Phone Number"
+      ]
+    }
+  ]
+}
