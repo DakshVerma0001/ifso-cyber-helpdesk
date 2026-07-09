@@ -3,20 +3,20 @@
   "display_name": "UPI Fraud",
   "severity": "CRITICAL",
   "financial": true,
-  "description": "Fraud involving Unified Payments Interface (UPI) transactions through deceptive payment requests, fake collect requests, malicious links or social engineering techniques.",
+  "description": "Fraud involving Unified Payments Interface (UPI) transactions through deceptive collect requests, fake refunds, malicious payment links, QR-code traps, impersonation, or other social engineering techniques used to steal money or payment credentials.",
   "recommended_actions": [
-    "Immediately contact your bank.",
-    "Call 1930 without delay.",
+    "Immediately contact your bank or payment app support.",
+    "Call 1930 without delay if money was transferred.",
     "Report the incident on the National Cyber Crime Reporting Portal.",
-    "Do not approve unknown collect requests.",
-    "Preserve transaction receipts and screenshots."
+    "Do not approve unknown collect requests or scan QR codes to receive money.",
+    "Preserve transaction receipts, screenshots, URLs, UPI IDs and chat logs."
   ],
   "prevention_tips": [
     "Never approve unknown collect requests.",
     "Verify the recipient before making payments.",
-    "Never share your UPI PIN.",
-    "Enable transaction alerts.",
-    "Keep your UPI application updated."
+    "Never share your UPI PIN, OTP or card details.",
+    "Read the payment screen carefully before confirming.",
+    "Keep your UPI app updated and enable transaction alerts."
   ],
   "rules": [
     {
@@ -28,11 +28,18 @@
         "approve request",
         "accept payment request",
         "pending collect request",
-        "payment request"
+        "payment request",
+        "send collect",
+        "upi collect",
+        "collect reqest",
+        "pay request"
       ],
-      "regex": [],
-      "explanation": "Victim is asked to approve a collect request.",
-      "confidence": 95,
+      "regex": [
+        "\\b(?:collect|pay|payment)\\s+req(?:uest|uest|uest)?\\b",
+        "\\b(?:accept|approve)\\s+(?:the\\s+)?(?:collect|payment)\\s+request\\b"
+      ],
+      "explanation": "Victim is asked to approve a UPI collect or payment request, often by claiming it is needed to receive money.",
+      "confidence": 96,
       "examples": [
         "Approve the collect request to receive your refund.",
         "Accept the payment request to claim your prize."
@@ -51,13 +58,22 @@
         "share upi pin",
         "enter upi pin",
         "verify upi pin",
-        "confirm pin"
+        "confirm pin",
+        "upi pincode",
+        "pin number",
+        "upi code",
+        "enter pin to receive",
+        "upi pin reqd"
       ],
-      "regex": [],
-      "explanation": "Attempts to obtain the victim's UPI PIN.",
+      "regex": [
+        "\\b(?:upi\\s*)?pin\\b",
+        "\\b(?:enter|share|confirm|verify)\\s+(?:your\\s+)?(?:upi\\s*)?pin\\b"
+      ],
+      "explanation": "Attempts to obtain the victim's UPI PIN or a similar payment authorization code.",
       "confidence": 100,
       "examples": [
-        "Enter your UPI PIN to receive money."
+        "Enter your UPI PIN to receive money.",
+        "Share the PIN to complete the payment."
       ],
       "evidence_required": [
         "Screenshot"
@@ -65,20 +81,28 @@
     },
     {
       "id": "UPI_RULE_003",
-      "name": "Refund Scam",
-      "weight": 25,
+      "name": "Refund or Cashback Scam",
+      "weight": 30,
       "keywords": [
         "refund",
         "cashback",
         "reward",
         "receive money",
-        "claim refund"
+        "claim refund",
+        "cash back",
+        "refund pending",
+        "money back",
+        "reund",
+        "cashbak"
       ],
-      "regex": [],
-      "explanation": "Uses refunds or cashback to trick victims.",
-      "confidence": 80,
+      "regex": [
+        "\\b(?:refund|cashback|cash\\s*back|reward)\\b.*\\b(?:approve|accept|scan|pin|otp)\\b"
+      ],
+      "explanation": "Uses refunds, cashback or rewards to trick victims into approving a request, scanning a QR code or entering sensitive details.",
+      "confidence": 90,
       "examples": [
-        "Claim your refund by approving this request."
+        "Claim your refund by approving this request.",
+        "Cashback is pending. Enter the PIN to receive it."
       ],
       "evidence_required": [
         "Transaction Receipt",
@@ -88,18 +112,27 @@
     {
       "id": "UPI_RULE_004",
       "name": "Payment Link Scam",
-      "weight": 30,
+      "weight": 35,
       "keywords": [
         "payment link",
         "upi link",
         "click payment",
-        "receive payment link"
+        "receive payment link",
+        "pay link",
+        "payment url",
+        "upi payment page",
+        "link for payment",
+        "paymet link"
       ],
-      "regex": [],
-      "explanation": "Fraud through malicious payment links.",
-      "confidence": 85,
+      "regex": [
+        "https?:\\/\\/[^\\s]+",
+        "\\b(?:upi|payment)\\s*(?:link|url|page)\\b"
+      ],
+      "explanation": "Fraud through malicious payment links that redirect victims to phishing or payment-approval pages.",
+      "confidence": 92,
       "examples": [
-        "Click this payment link to receive ₹5000."
+        "Click this payment link to receive Rs 5000.",
+        "Use the UPI link to complete your refund claim."
       ],
       "evidence_required": [
         "URL",
@@ -114,17 +147,167 @@
         "customer care",
         "technical support",
         "payment support",
-        "bank executive"
+        "bank executive",
+        "upi support",
+        "wallet support",
+        "support team",
+        "call center",
+        "custumer care"
       ],
       "regex": [],
-      "explanation": "Fraudster impersonates official support.",
-      "confidence": 90,
+      "explanation": "Fraudster impersonates official support and pressures the victim to approve a request, share credentials or install a malicious app.",
+      "confidence": 93,
       "examples": [
-        "I am calling from your bank's UPI support team."
+        "I am calling from your bank's UPI support team.",
+        "Customer care needs your PIN to fix the issue."
       ],
       "evidence_required": [
         "Phone Number",
         "Call Recording"
+      ]
+    },
+    {
+      "id": "UPI_RULE_006",
+      "name": "QR Code Receive Money Trap",
+      "weight": 45,
+      "keywords": [
+        "scan qr",
+        "qr code",
+        "receive money",
+        "collect money",
+        "scan to receive",
+        "qr payment",
+        "scan to get payment",
+        "receive via qr",
+        "qr recieve"
+      ],
+      "regex": [
+        "\\bscan\\s+(?:this\\s+)?qr\\b",
+        "\\bqr\\s+to\\s+receive\\b"
+      ],
+      "explanation": "Victim is told to scan a QR code to receive money, but the scan actually authorizes a payment or collect request.",
+      "confidence": 98,
+      "examples": [
+        "Scan this QR to receive Rs 5000.",
+        "Scan the code to get your refund."
+      ],
+      "evidence_required": [
+        "QR Screenshot",
+        "Transaction ID"
+      ]
+    },
+    {
+      "id": "UPI_RULE_007",
+      "name": "Merchant Buyer Seller Scam",
+      "weight": 30,
+      "keywords": [
+        "buyer",
+        "seller",
+        "marketplace",
+        "olx",
+        "quikr",
+        "facebook marketplace",
+        "advance payment",
+        "booking amount",
+        "online marketplace",
+        "item sold"
+      ],
+      "regex": [],
+      "explanation": "Targets buyers and sellers on online marketplaces with fake payment confirmations, refund tricks or QR-based traps.",
+      "confidence": 88,
+      "examples": [
+        "I'm sending payment through QR.",
+        "Approve the request so I can release your booking amount."
+      ],
+      "evidence_required": [
+        "Chat Screenshot",
+        "Transaction ID"
+      ]
+    },
+    {
+      "id": "UPI_RULE_008",
+      "name": "Account KYC or Suspension Threat",
+      "weight": 28,
+      "keywords": [
+        "kyc pending",
+        "update kyc",
+        "account blocked",
+        "wallet blocked",
+        "account suspended",
+        "upi verification",
+        "account freeze",
+        "service suspended",
+        "kyc suspnded"
+      ],
+      "regex": [],
+      "explanation": "Uses KYC, account blocking or wallet suspension threats to force the victim into quick action.",
+      "confidence": 90,
+      "examples": [
+        "Your UPI account will be blocked unless you verify now.",
+        "KYC pending. Update immediately to avoid suspension."
+      ],
+      "evidence_required": [
+        "SMS Screenshot",
+        "Chat Screenshot",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "UPI_RULE_009",
+      "name": "Malicious App or Screen Share Request",
+      "weight": 40,
+      "keywords": [
+        "install app",
+        "download apk",
+        "anydesk",
+        "teamviewer",
+        "rustdesk",
+        "screen share",
+        "remote support",
+        "share access code",
+        "install apk to receive"
+      ],
+      "regex": [
+        "\\.apk\\b"
+      ],
+      "explanation": "Requests installation of a remote access or malicious app that can capture payment approvals or device data.",
+      "confidence": 97,
+      "examples": [
+        "Install this APK to complete UPI verification.",
+        "Share your screen so I can fix the payment issue."
+      ],
+      "evidence_required": [
+        "APK File",
+        "Screenshot",
+        "Phone Number"
+      ]
+    },
+    {
+      "id": "UPI_RULE_010",
+      "name": "Urgency and Limited Time Pressure",
+      "weight": 20,
+      "keywords": [
+        "immediately",
+        "within 5 minutes",
+        "urgent",
+        "last chance",
+        "act now",
+        "expires today",
+        "limited time",
+        "send now",
+        "urjent"
+      ],
+      "regex": [],
+      "explanation": "Uses urgency to pressure the victim into approving a request or sending money without verification.",
+      "confidence": 82,
+      "examples": [
+        "Act now! Approve the request within 5 minutes.",
+        "The offer expires today. Send the UPI payment now."
+      ],
+      "evidence_required": [
+        "SMS Screenshot",
+        "Chat Screenshot",
+        "Phone Number"
       ]
     }
   ]

@@ -1,6 +1,6 @@
 from datetime import datetime
 from pydantic import BaseModel, Field
-
+from app.services.evidence_models import EvidenceCollection
 
 class ConversationSession(BaseModel):
     session_id: str
@@ -39,6 +39,8 @@ class ConversationSession(BaseModel):
 
     description: str | None = None
 
-    evidence: list[str] = Field(default_factory=list)
+    evidence: EvidenceCollection = Field(
+    default_factory=EvidenceCollection
+    )
 
     answers: dict = Field(default_factory=dict)

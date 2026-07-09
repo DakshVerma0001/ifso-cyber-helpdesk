@@ -93,7 +93,7 @@ QUESTIONS = {
         "question": "Please describe what happened in your own words.",
         "type": "text",
         "required": True,
-        "next": "CLASSIFICATION"
+        "next": None
     }
 }
 

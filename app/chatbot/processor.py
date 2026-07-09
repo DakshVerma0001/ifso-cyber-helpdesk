@@ -4,13 +4,13 @@ from app.chatbot.conversation_manager import ConversationManager
 from app.chatbot.conversation_schema import ConversationSession
 from app.chatbot.state_machine import ConversationStateMachine
 from app.chatbot.validators import ConversationValidator
-from app.fraud_detection.rule_engine import RuleEngine
+from app.services.classification_service import ClassificationService
 
 
 class ConversationProcessor:
     def __init__(self) -> None:
         self.manager = ConversationManager()
-        self.classifier = RuleEngine()
+        self.classifier = ClassificationService()
 
     def process_answer(
         self,
@@ -60,18 +60,18 @@ class ConversationProcessor:
                 session.transaction_time = answer
 
             case "MESSAGE_INPUT":
-                result = self.classifier.analyze(answer)
+                result = self.classifier.classify(answer)
 
-                session.fraud_type = result.category
+                session.fraud_type = result.fraud_type
 
                 session.answers["MESSAGE_ANALYSIS"] = result.model_dump()
 
             case "DESCRIPTION":
                 session.description = answer
 
-                result = self.classifier.analyze(answer)
+                result = self.classifier.classify(answer)
 
-                session.fraud_type = result.category
+                session.fraud_type = result.fraud_type
 
                 session.answers["CLASSIFICATION"] = result.model_dump()
 

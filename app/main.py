@@ -13,6 +13,9 @@ from app.core.exceptions import register_exception_handlers
 from app.middleware.logging import LoggingMiddleware
 from app.middleware.request_id import RequestIDMiddleware
 
+from app.api.report import router as report_router
+from app.api.evidence import router as evidence_router
+
 settings = get_settings()
 
 
@@ -56,6 +59,15 @@ app.include_router(
     prefix=settings.API_V1_PREFIX,
 )
 
+app.include_router(
+    report_router,
+    prefix=settings.API_V1_PREFIX,
+)
+
+app.include_router(
+    evidence_router,
+    prefix=settings.API_V1_PREFIX,
+)
 
 @app.get("/", tags=["Root"])
 async def root():

@@ -2,9 +2,11 @@ from __future__ import annotations
 
 import evaluate
 import numpy as np
+import torch
 
 from transformers import (
     DataCollatorWithPadding,
+    EarlyStoppingCallback,
     Trainer,
     TrainingArguments,
 )
@@ -75,6 +77,8 @@ class FraudTrainer:
         test_dataset,
     ):
 
+        use_fp16 = torch.cuda.is_available()
+
         args = TrainingArguments(
 
             output_dir=str(ARTIFACTS),
@@ -93,7 +97,11 @@ class FraudTrainer:
 
             save_strategy="epoch",
 
-            logging_strategy="epoch",
+            logging_strategy="steps",
+
+            logging_steps=100,
+
+            save_total_limit=2,
 
             load_best_model_at_end=True,
 
@@ -101,7 +109,11 @@ class FraudTrainer:
 
             greater_is_better=True,
 
+            fp16=use_fp16,
+
             report_to="none",
+
+            seed=42,
         )
 
         trainer = Trainer(
@@ -121,6 +133,12 @@ class FraudTrainer:
             ),
 
             compute_metrics=FraudTrainer.compute_metrics,
+
+            callbacks=[
+                EarlyStoppingCallback(
+                    early_stopping_patience=2
+                )
+            ],
         )
 
         return trainer

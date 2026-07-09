@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 import joblib
 
@@ -10,9 +11,23 @@ from app.ml.bert.trainer import FraudTrainer
 
 def main():
 
+    print("=" * 60)
+    print("IFSO Fraud Detection Model Training")
+    print("=" * 60)
+    print()
+
+    print(f"Dataset: {os.getenv('DATASET_PATH', 'Local Dataset')}")
+    print(f"Artifacts Directory: {ARTIFACTS}")
+    print()
+
     dataset = FraudDataset()
 
     train, test, encoder = dataset.prepare()
+
+    print(f"Training Samples: {len(train)}")
+    print(f"Validation Samples: {len(test)}")
+    print(f"Fraud Categories: {len(encoder.classes_)}")
+    print()
 
     model = FraudClassifier.build(
         len(encoder.classes_)
@@ -26,12 +41,19 @@ def main():
 
         train_dataset=train,
 
-        test_dataset=test,
+        eval_dataset=test,
     )
+
+    print("Starting Training...")
+    print()
 
     trainer.train()
 
-    trainer.evaluate()
+    print()
+    print("Evaluating Best Model...")
+    print()
+
+    metrics = trainer.evaluate()
 
     ARTIFACTS.mkdir(
         parents=True,
@@ -52,8 +74,12 @@ def main():
     )
 
     print()
+    print("=" * 60)
+    print("Training Completed Successfully")
+    print("=" * 60)
+    print()
 
-    print("Training completed.")
+    print(metrics)
 
     print()
 

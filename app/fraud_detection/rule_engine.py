@@ -1,3 +1,7 @@
+from __future__ import annotations
+
+import re
+
 from app.fraud_detection.constants import (
     HIGH_THRESHOLD,
     MAX_CONFIDENCE,
@@ -14,10 +18,101 @@ from app.knowledge.manager import KnowledgeManager
 
 
 class RuleEngine:
+
     def __init__(self) -> None:
+
         self.knowledge = KnowledgeManager()
 
-    def analyze(self, message: str) -> FraudAnalysisResult:
+    @staticmethod
+    def _normalize_word(word: str) -> str:
+        """
+        Lightweight stemming without external dependencies.
+
+        scanned -> scan
+        scanning -> scan
+        shared -> share
+        sharing -> share
+        returns -> return
+        codes -> code
+        """
+
+        word = word.lower()
+
+        # Handle common verb forms
+        if word.endswith("ing") and len(word) > 5:
+            word = word[:-3]
+
+        elif word.endswith("ed") and len(word) > 4:
+            word = word[:-2]
+
+        elif word.endswith("es") and len(word) > 4:
+            word = word[:-2]
+
+        elif word.endswith("s") and len(word) > 3:
+            word = word[:-1]
+
+        # Restore trailing "e" for words like:
+        # shar -> share
+        # receiv -> receive
+        if word.endswith(("shar", "receiv", "verifi", "scann")):
+            word += "e"
+
+        return word
+
+    def _keyword_match(
+        self,
+        message: str,
+        keyword: str,
+    ) -> bool:
+
+        message = message.lower()
+        keyword = keyword.lower()
+
+        # Fast path
+        if keyword in message:
+            return True
+
+        message_words = {
+            self._normalize_word(word)
+            for word in re.findall(
+                r"[a-z0-9]+",
+                message,
+            )
+        }
+
+        keyword_words = [
+            self._normalize_word(word)
+            for word in re.findall(
+                r"[a-z0-9]+",
+                keyword,
+            )
+        ]
+
+        if not keyword_words:
+            return False
+
+        matched = sum(
+            word in message_words
+            for word in keyword_words
+        )
+
+        # All words for single-word keywords,
+        # 75% for multi-word keywords.
+        threshold = (
+            1.0
+            if len(keyword_words) == 1
+            else 0.75
+        )
+
+        return (
+            matched / len(keyword_words)
+        ) >= threshold
+
+    def analyze(
+        self,
+        message: str,
+    ) -> FraudAnalysisResult:
+
         message = normalize_text(message)
 
         patterns = PatternMatcher.detect(message)
@@ -30,7 +125,10 @@ class RuleEngine:
 
                 for keyword in rule.keywords:
 
-                    if keyword.lower() in message:
+                    if self._keyword_match(
+                        message,
+                        keyword,
+                    ):
 
                         scorer.add_score(
                             category=category.category,
@@ -38,7 +136,10 @@ class RuleEngine:
                             explanation=rule.explanation,
                         )
 
+        # Pattern based boosts
+
         if patterns["urls"]:
+
             scorer.add_score(
                 category="COMMON",
                 weight=10,
@@ -46,6 +147,7 @@ class RuleEngine:
             )
 
         if patterns["upi_ids"]:
+
             scorer.add_score(
                 category="UPI_FRAUD",
                 weight=20,
@@ -53,6 +155,7 @@ class RuleEngine:
             )
 
         if patterns["phones"]:
+
             scorer.add_score(
                 category="COMMON",
                 weight=5,
@@ -62,6 +165,7 @@ class RuleEngine:
         category_name, score = scorer.highest_category()
 
         if category_name is None:
+
             return FraudAnalysisResult(
                 label=RISK_SAFE,
                 confidence=95,
@@ -72,17 +176,33 @@ class RuleEngine:
             )
 
         if score >= HIGH_THRESHOLD:
+
             label = RISK_SCAM
+
         elif score >= MEDIUM_THRESHOLD:
+
             label = RISK_SUSPICIOUS
+
         else:
+
             label = RISK_SAFE
 
         return FraudAnalysisResult(
+
             label=label,
-            confidence=min(score, MAX_CONFIDENCE),
+
+            confidence=min(
+                score,
+                MAX_CONFIDENCE,
+            ),
+
             category=category_name,
+
             score=score,
-            red_flags=sorted(set(scorer.flags)),
+
+            red_flags=sorted(
+                set(scorer.flags)
+            ),
+
             explanation=f"{len(scorer.flags)} fraud indicators matched.",
         )
