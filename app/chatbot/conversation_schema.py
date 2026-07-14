@@ -7,6 +7,8 @@ class ConversationSession(BaseModel):
 
     current_state: str
 
+    mode: str = "investigation"
+
     created_at: datetime = Field(default_factory=datetime.utcnow)
 
     updated_at: datetime = Field(default_factory=datetime.utcnow)

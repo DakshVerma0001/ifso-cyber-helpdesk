@@ -2,14 +2,18 @@ from datetime import datetime
 
 from app.chatbot.conversation_manager import ConversationManager
 from app.chatbot.conversation_schema import ConversationSession
+from app.chatbot.question_registry import QuestionRegistry
 from app.chatbot.state_machine import ConversationStateMachine
 from app.chatbot.validators import ConversationValidator
 from app.services.classification_service import ClassificationService
 
 
 class ConversationProcessor:
+
     def __init__(self) -> None:
+
         self.manager = ConversationManager()
+
         self.classifier = ClassificationService()
 
     def process_answer(
@@ -17,6 +21,7 @@ class ConversationProcessor:
         session: ConversationSession,
         answer: str,
     ):
+
         current_question = ConversationStateMachine.get_question(
             session.current_state
         )
@@ -30,9 +35,30 @@ class ConversationProcessor:
             raise ValueError(error_message)
 
         session.answers[current_question.id] = answer
+
         session.updated_at = datetime.utcnow()
 
-        self._update_session(session, current_question.id, answer)
+        # ---------------------------------------------------
+        # Switch to Awareness Mode
+        # ---------------------------------------------------
+        if (
+            current_question.id == "MONEY_LOST"
+            and answer == "QUERY"
+        ):
+
+            session.mode = "awareness"
+
+            session.current_state = "AWARENESS_CHAT"
+
+            return QuestionRegistry.get(
+                "AWARENESS_CHAT"
+            )
+
+        self._update_session(
+            session,
+            current_question.id,
+            answer,
+        )
 
         next_question = self.manager.next_question(
             session=session,
@@ -60,20 +86,30 @@ class ConversationProcessor:
                 session.transaction_time = answer
 
             case "MESSAGE_INPUT":
-                result = self.classifier.classify(answer)
+
+                result = self.classifier.classify(
+                    answer
+                )
 
                 session.fraud_type = result.fraud_type
 
-                session.answers["MESSAGE_ANALYSIS"] = result.model_dump()
+                session.answers[
+                    "MESSAGE_ANALYSIS"
+                ] = result.model_dump()
 
             case "DESCRIPTION":
+
                 session.description = answer
 
-                result = self.classifier.classify(answer)
+                result = self.classifier.classify(
+                    answer
+                )
 
                 session.fraud_type = result.fraud_type
 
-                session.answers["CLASSIFICATION"] = result.model_dump()
+                session.answers[
+                    "CLASSIFICATION"
+                ] = result.model_dump()
 
             case _:
                 pass

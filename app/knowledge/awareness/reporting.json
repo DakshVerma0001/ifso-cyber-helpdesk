@@ -1,0 +1,86 @@
+{
+  "topic": "REPORTING",
+
+  "display_name": "Reporting Cyber Crime",
+
+  "description": "Guidance on reporting cyber fraud incidents in India, including immediate steps after becoming a victim, preserving evidence, filing complaints through official portals, contacting banks, and reporting to law enforcement agencies.",
+
+  "keywords": [
+    "report",
+    "report fraud",
+    "report cyber crime",
+    "report cybercrime",
+    "cyber complaint",
+    "file complaint",
+    "online complaint",
+    "cyber portal",
+    "1930",
+    "helpline",
+    "where do i report",
+    "how to report",
+    "lost money",
+    "money stolen",
+    "victim",
+    "fraud complaint",
+    "police complaint",
+    "fir",
+    "cyber cell",
+    "complaint number"
+  ],
+
+  "common_questions": [
+    "How do I report cyber fraud?",
+    "Where can I file a cyber crime complaint?",
+    "What should I do if I lost money online?",
+    "How do I contact the cyber crime helpline?",
+    "Can I report cyber fraud online?",
+    "How do I file an FIR for cyber crime?",
+    "What evidence should I preserve?"
+  ],
+
+  "guidelines": [
+    "Immediately stop communicating with the fraudster.",
+    "Call the National Cyber Crime Helpline (1930) immediately if money has been transferred.",
+    "Report the incident on the National Cyber Crime Reporting Portal.",
+    "Inform your bank or payment service provider immediately.",
+    "Preserve all evidence including screenshots, chat history, transaction receipts, SMS messages, emails and call recordings.",
+    "File an FIR if instructed by the police or if significant financial loss has occurred."
+  ],
+
+  "do": [
+    "Report immediately.",
+    "Take screenshots.",
+    "Save transaction IDs.",
+    "Keep phone numbers and URLs.",
+    "Contact your bank immediately."
+  ],
+
+  "dont": [
+    "Do not delete chats.",
+    "Do not delay reporting.",
+    "Do not continue talking to the scammer.",
+    "Do not share additional information."
+  ],
+
+  "official_resources": [
+    {
+      "title": "National Cyber Crime Reporting Portal",
+      "url": "https://cybercrime.gov.in"
+    },
+    {
+      "title": "Citizen Financial Cyber Fraud Reporting",
+      "url": "https://cybercrime.gov.in"
+    }
+  ],
+
+  "emergency_contacts": [
+    {
+      "name": "National Cyber Crime Helpline",
+      "value": "1930"
+    },
+    {
+      "name": "Police Emergency",
+      "value": "112"
+    }
+  ]
+}

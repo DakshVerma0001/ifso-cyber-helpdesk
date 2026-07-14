@@ -16,6 +16,10 @@ from app.middleware.request_id import RequestIDMiddleware
 from app.api.report import router as report_router
 from app.api.evidence import router as evidence_router
 
+from app.api.awareness import (
+    router as awareness_router,
+)
+
 settings = get_settings()
 
 
@@ -66,6 +70,10 @@ app.include_router(
 
 app.include_router(
     evidence_router,
+    prefix=settings.API_V1_PREFIX,
+)
+app.include_router(
+    awareness_router,
     prefix=settings.API_V1_PREFIX,
 )
 

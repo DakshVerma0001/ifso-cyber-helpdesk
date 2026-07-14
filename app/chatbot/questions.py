@@ -15,11 +15,13 @@ QUESTIONS = {
         "options": [
             {"id": "YES", "label": "Yes"},
             {"id": "NO", "label": "No"},
+            {"id": "QUERY", "label":  "No, I have a cyber fraud related query"},
             {"id": "NOT_SURE", "label": "Not Sure"}
         ],
         "next": {
             "YES": "AMOUNT",
             "NO": "MESSAGE_AVAILABLE",
+            "QUERY": "AWARENESS_CHAT",
             "NOT_SURE": "DESCRIPTION"
         }
     },
@@ -197,6 +199,22 @@ QUESTIONS.update({
         "id":"PROFILE_LINK",
         "question":"Paste the profile link if available.",
         "type":"text"
-    }
+    },
+     "AWARENESS_CHAT": {
 
+        "id": "AWARENESS_CHAT",
+
+        "question": (
+            "Please ask any cyber fraud related question. "
+            "I will help you understand common scams, "
+            "warning signs and prevention tips."
+        ),
+
+        "type": "text",
+
+        "required": True,
+
+        "next": None,
+    }
+    
 })

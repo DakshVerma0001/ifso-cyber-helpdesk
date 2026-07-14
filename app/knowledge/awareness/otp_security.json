@@ -1,0 +1,54 @@
+{
+  "topic": "OTP_SECURITY",
+
+  "display_name": "OTP Safety",
+
+  "description": "Best practices for protecting One-Time Passwords (OTPs) and preventing OTP-related fraud.",
+
+  "keywords": [
+    "otp",
+    "verification code",
+    "one time password",
+    "sms code",
+    "bank otp",
+    "authentication code"
+  ],
+
+  "common_questions": [
+    "Should I share my OTP?",
+    "What is an OTP?",
+    "Why did I receive an OTP?",
+    "Can bank employees ask for OTP?"
+  ],
+
+  "guidelines": [
+    "Banks never ask for OTP over phone.",
+    "OTP should never be shared.",
+    "Read SMS carefully before entering OTP."
+  ],
+
+  "do": [
+    "Keep OTP confidential.",
+    "Verify every transaction."
+  ],
+
+  "dont": [
+    "Never share OTP.",
+    "Never forward OTP screenshots.",
+    "Never disclose OTP to customer care."
+  ],
+
+  "official_resources": [
+    {
+      "title": "RBI Cyber Security Awareness",
+      "url": "https://www.rbi.org.in"
+    }
+  ],
+
+  "emergency_contacts": [
+    {
+      "name": "Cyber Fraud Helpline",
+      "value": "1930"
+    }
+  ]
+}

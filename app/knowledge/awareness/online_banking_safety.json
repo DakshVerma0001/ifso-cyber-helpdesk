@@ -1,0 +1,57 @@
+{
+  "topic": "ONLINE_BANKING_SAFETY",
+
+  "display_name": "Online Banking Safety",
+
+  "description": "Safe practices for using online banking, UPI and digital payment applications in India.",
+
+  "keywords": [
+    "online banking",
+    "upi",
+    "google pay",
+    "gpay",
+    "phonepe",
+    "paytm",
+    "bhim",
+    "transaction",
+    "bank account",
+    "payment",
+    "net banking"
+  ],
+
+  "common_questions": [
+    "Is UPI safe?",
+    "How can I avoid banking fraud?",
+    "Should I accept collect requests?"
+  ],
+
+  "guidelines": [
+    "Verify the recipient before sending money.",
+    "Never approve unknown UPI collect requests.",
+    "Use official banking apps only."
+  ],
+
+  "do": [
+    "Check transaction details.",
+    "Enable transaction alerts."
+  ],
+
+  "dont": [
+    "Don't share UPI PIN.",
+    "Don't scan unknown QR codes."
+  ],
+
+  "official_resources": [
+    {
+      "title": "NPCI",
+      "url": "https://www.npci.org.in"
+    }
+  ],
+
+  "emergency_contacts": [
+    {
+      "name": "Cyber Fraud Helpline",
+      "value": "1930"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "topic": "HELPLINE",
+
+  "display_name": "Cyber Crime Helplines",
+
+  "description": "Official cyber crime helpline numbers and emergency contacts available in India for reporting cyber fraud and financial scams.",
+
+  "keywords": [
+    "1930",
+    "helpline",
+    "help",
+    "support",
+    "contact",
+    "call",
+    "cyber cell",
+    "police number",
+    "emergency",
+    "cyber helpline"
+  ],
+
+  "common_questions": [
+    "What is the cyber crime helpline number?",
+    "Who should I call after cyber fraud?",
+    "How do I contact the cyber cell?",
+    "Can I call 1930?"
+  ],
+
+  "guidelines": [
+    "Call 1930 immediately after financial cyber fraud.",
+    "Contact your bank before reporting if possible.",
+    "Provide transaction details while reporting.",
+    "Keep evidence ready."
+  ],
+
+  "do": [
+    "Call immediately.",
+    "Keep transaction ID ready.",
+    "Follow official instructions."
+  ],
+
+  "dont": [
+    "Don't delay reporting.",
+    "Don't share OTP with anyone."
+  ],
+
+  "official_resources": [
+    {
+      "title": "National Cyber Crime Reporting Portal",
+      "url": "https://cybercrime.gov.in"
+    }
+  ],
+
+  "emergency_contacts": [
+    {
+      "name": "Cyber Fraud Helpline",
+      "value": "1930"
+    },
+    {
+      "name": "Police",
+      "value": "112"
+    }
+  ]
+}

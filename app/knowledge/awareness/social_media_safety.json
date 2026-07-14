@@ -1,0 +1,55 @@
+{
+  "topic": "SOCIAL_MEDIA_SAFETY",
+
+  "display_name": "Social Media Safety",
+
+  "description": "Awareness about scams occurring through WhatsApp, Telegram, Facebook, Instagram, X and other social media platforms.",
+
+  "keywords": [
+    "whatsapp",
+    "telegram",
+    "facebook",
+    "instagram",
+    "x",
+    "social media",
+    "fake account",
+    "fake profile"
+  ],
+
+  "common_questions": [
+    "How do I identify fake social media accounts?",
+    "What should I do if I receive suspicious messages?",
+    "Can WhatsApp messages be scams?"
+  ],
+
+  "guidelines": [
+    "Verify unknown profiles before interacting.",
+    "Avoid clicking suspicious links.",
+    "Enable two-factor authentication."
+  ],
+
+  "do": [
+    "Report fake profiles.",
+    "Block suspicious accounts."
+  ],
+
+  "dont": [
+    "Don't send money to strangers.",
+    "Don't share OTPs.",
+    "Don't install APKs sent through chat."
+  ],
+
+  "official_resources": [
+    {
+      "title": "National Cyber Crime Reporting Portal",
+      "url": "https://cybercrime.gov.in"
+    }
+  ],
+
+  "emergency_contacts": [
+    {
+      "name": "Cyber Fraud Helpline",
+      "value": "1930"
+    }
+  ]
+}

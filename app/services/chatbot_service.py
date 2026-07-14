@@ -7,6 +7,9 @@ from app.chatbot.session_store import SessionStore
 from app.services.fraud_investigation_service import (
     FraudInvestigationService,
 )
+from app.services.awareness_service import (
+    AwarenessService,
+)
 
 
 class ChatbotService:
@@ -20,6 +23,8 @@ class ChatbotService:
         self.store = SessionStore()
 
         self.investigation_service = FraudInvestigationService()
+
+        self.awareness_service = AwarenessService()
 
     def start(self) -> ConversationResponse:
 
@@ -45,6 +50,31 @@ class ChatbotService:
         if session is None:
             raise ValueError("Invalid session.")
 
+        if session.mode == "awareness":
+
+            response = self.awareness_service.answer(
+                answer
+            )
+
+            return ConversationResponse(
+
+                session_id=session.session_id,
+
+                completed=False,
+
+                message=(
+                    f"## {response.title}\n\n"
+                    f"{response.description}\n\n"
+                    f"Recommended Actions:\n"
+                    + "\n".join(
+                        f"• {item}"
+                        for item in response.recommended_actions
+                    )
+                ),
+
+                fraud_type=response.category,
+            )
+
         question = self.processor.process_answer(
             session,
             answer,
@@ -66,35 +96,35 @@ class ChatbotService:
 
             return ConversationResponse(
 
-            session_id=session.session_id,
+                session_id=session.session_id,
 
-            completed=True,
+                completed=True,
 
-            fraud_type=report.fraud_type,
+                fraud_type=report.fraud_type,
 
-            confidence=report.confidence,
+                confidence=report.confidence,
 
-            severity=report.severity,
+                severity=report.severity,
 
-            description=report.description,
+                description=report.description,
 
-            red_flags=report.explanation,
+                red_flags=report.explanation,
 
-            recommended_actions=report.recommended_actions,
+                recommended_actions=report.recommended_actions,
 
-            evidence_required=report.evidence_required,
+                evidence_required=report.evidence_required,
 
-            evidence=report.evidence,
+                evidence=report.evidence,
 
-            complaint_ready=False,
+                complaint_ready=False,
 
-            complaint=None,
+                complaint=None,
 
-            message=(
-                "Investigation completed successfully. "
-                "Please upload the required evidence to continue."
-            ),
-        )
+                message=(
+                    "Investigation completed successfully. "
+                    "Please upload the required evidence to continue."
+                ),
+            )
 
         return ConversationResponse(
 
